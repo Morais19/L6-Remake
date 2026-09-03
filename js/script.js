@@ -1,23 +1,55 @@
 /* ── 0. Galerias de projeto ───────────────────────────────────────────────
    Fotos extras de cada projeto exibidas no modal (além da capa do card).
-   A capa do card entra automaticamente como "Fachada" e a planta é
-   adicionada ao final. Para trocar/adicionar fotos, edite este objeto.
+   A capa do card entra automaticamente como "Fachada"; as fotos listadas
+   aqui vêm em seguida no carrossel. Para trocar/adicionar fotos, edite
+   este objeto — ex.: [{ src: "assets/images/...jpg", label: "Fachada 2" }].
 
-   As fotos de cômodos internos (salas, cozinhas, suítes, etc.) foram
-   removidas: cada projeto exibe apenas Fachada, Planta Baixa e o modelo 3D.
+   O modal mostra apenas fotos e o modelo 3D (sem planta baixa).
+
+   ATENÇÃO: as fotos abaixo são imagens de banco livre (Unsplash), usadas
+   apenas como modelo para o carrossel. Substitua pelas fotos reais de cada
+   obra — basta trocar o arquivo em assets/images/gallery/ mantendo o nome,
+   ou apontar o "src" para o novo caminho.
    ────────────────────────────────────────────────────────────────────── */
-const PLANTA_SRC = "assets/images/gallery/planta-modelo.jpg";
+const GAL = "assets/images/gallery/";
 
 const PROJ_GALLERIES = {
-    "residencia-moderna": [],
-    "residencia-contemporanea": [],
-    "condominio-residencial": [],
-    "centro-empresarial": [],
-    "edificio-comercial-misto": [],
-    "shopping-center": [],
-    "complexo-industrial": [],
-    "galpao-industrial": [],
-    "planta-industrial": [],
+    "residencia-moderna": [
+        { src: GAL + "residencia-moderna-2.jpg", label: "Vista lateral" },
+        { src: GAL + "residencia-moderna-3.jpg", label: "Área de lazer" },
+    ],
+    "residencia-contemporanea": [
+        { src: GAL + "residencia-contemporanea-2.jpg", label: "Vista lateral" },
+        { src: GAL + "residencia-contemporanea-3.jpg", label: "Área externa" },
+    ],
+    "condominio-residencial": [
+        { src: GAL + "condominio-residencial-2.jpg", label: "Vista das torres" },
+        { src: GAL + "condominio-residencial-3.jpg", label: "Fachada lateral" },
+    ],
+    "centro-empresarial": [
+        { src: GAL + "centro-empresarial-2.jpg", label: "Fachada em vidro" },
+        { src: GAL + "centro-empresarial-3.jpg", label: "Vista lateral" },
+    ],
+    "edificio-comercial-misto": [
+        { src: GAL + "edificio-comercial-misto-2.jpg", label: "Fachada lateral" },
+        { src: GAL + "edificio-comercial-misto-3.jpg", label: "Detalhe da fachada" },
+    ],
+    "shopping-center": [
+        { src: GAL + "shopping-center-2.jpg", label: "Praça central" },
+        { src: GAL + "shopping-center-3.jpg", label: "Circulação interna" },
+    ],
+    "complexo-industrial": [
+        { src: GAL + "complexo-industrial-2.jpg", label: "Vista geral" },
+        { src: GAL + "complexo-industrial-3.jpg", label: "Pátio de manobras" },
+    ],
+    "galpao-industrial": [
+        { src: GAL + "galpao-industrial-2.jpg", label: "Vista externa" },
+        { src: GAL + "galpao-industrial-3.jpg", label: "Pátio de manobras" },
+    ],
+    "planta-industrial": [
+        { src: GAL + "planta-industrial-2.jpg", label: "Bloco industrial" },
+        { src: GAL + "planta-industrial-3.jpg", label: "Vista lateral" },
+    ],
 };
 
 /* ── 1. Revelação por rolagem dos cards ──────────────────────────────────── */
@@ -143,19 +175,19 @@ document.addEventListener('DOMContentLoaded', function () {
 function openProjectModal(project) {
     const has3D = !!project.sketchfab;
 
-    /* Monta a lista de mídias: capa (Fachada) + fotos extras + planta + (3D) */
+    /* Monta a lista de mídias: capa (Fachada) + fotos extras + (3D) */
     const media = [{ type: 'photo', src: project.image, label: 'Fachada' }];
     (project.gallery || []).forEach(g => media.push({ type: 'photo', src: g.src, label: g.label }));
-    media.push({ type: 'planta', src: PLANTA_SRC, label: 'Planta Baixa' });
     if (has3D) media.push({ type: '3d', label: 'Modelo 3D' });
 
-    const photoIdx = [];
-    media.forEach((m, i) => { if (m.type === 'photo') photoIdx.push(i); });
+    /* Slides do carrossel = as fotos.
+       O modelo 3D fica fora do carrossel, acessível pela aba "Modelo 3D". */
+    const slideIdx = [];
+    media.forEach((m, i) => { if (m.type !== '3d') slideIdx.push(i); });
 
     /* Ícones SVG (o tamanho vem do CSS) */
     const cubeIcon   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>';
     const photoIcon  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
-    const plantaIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>';
 
     /* Cartões de informação (Área / Duração / Cliente) */
     const stat = (label, value, icon) =>
@@ -164,14 +196,6 @@ function openProjectModal(project) {
         stat('Área', project.area, '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>') +
         stat('Duração', project.duration, '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>') +
         stat('Cliente', project.client, '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>');
-
-    /* Miniaturas (fotos + 3D + planta) */
-    const thumbsHTML = media.map((m, i) => {
-        const inner = (m.type === '3d')
-            ? '<span class="pm-thumb-icon">' + cubeIcon + '</span>'
-            : '<span class="pm-thumb-img"><img src="' + m.src + '" alt="' + m.label + '" loading="lazy"></span>';
-        return '<button class="pm-thumb" type="button" data-i="' + i + '">' + inner + '<span class="pm-thumb-cap">' + m.label + '</span></button>';
-    }).join('');
 
     /* Abas (Fotos / Modelo 3D) */
     const tabsHTML =
@@ -192,7 +216,6 @@ function openProjectModal(project) {
                     '<span class="pm-counter"></span>' +
                 '</div>' +
                 '<div class="pm-tabs">' + tabsHTML + '</div>' +
-                '<div class="pm-thumbs">' + thumbsHTML + '</div>' +
             '</div>' +
             '<div class="pm-info">' +
                 '<div>' +
@@ -204,7 +227,6 @@ function openProjectModal(project) {
                     '<p class="pm-about-h">Sobre o projeto</p>' +
                     '<p class="pm-about-t">' + project.fullDescription + '</p>' +
                 '</div>' +
-                '<button class="pm-planta-btn" type="button">' + plantaIcon + ' Ver planta baixa</button>' +
             '</div>' +
         '</div>';
 
@@ -219,7 +241,6 @@ function openProjectModal(project) {
     const nextBtn = overlay.querySelector('.pm-next');
     const counter = overlay.querySelector('.pm-counter');
     const tabs    = Array.prototype.slice.call(overlay.querySelectorAll('.pm-tab'));
-    const thumbs  = Array.prototype.slice.call(overlay.querySelectorAll('.pm-thumb'));
     let current = 0;
     let iframeLoaded = false;
 
@@ -234,7 +255,6 @@ function openProjectModal(project) {
     function render() {
         const item = media[current];
         const is3D = item.type === '3d';
-        const isPhoto = item.type === 'photo';
 
         if (is3D) {
             ensureIframe();
@@ -245,41 +265,35 @@ function openProjectModal(project) {
             photoEl.alt = item.label;
         }
 
-        prevBtn.style.display = nextBtn.style.display = isPhoto ? 'flex' : 'none';
-        if (isPhoto) {
-            counter.style.display = 'block';
-            counter.textContent = (photoIdx.indexOf(current) + 1) + ' / ' + photoIdx.length;
-        } else {
-            counter.style.display = 'none';
+        /* setas e contador só fazem sentido com mais de uma foto */
+        const multi = !is3D && slideIdx.length > 1;
+        prevBtn.style.display = nextBtn.style.display = multi ? 'flex' : 'none';
+        counter.style.display = multi ? 'block' : 'none';
+        if (multi) {
+            counter.textContent = item.label + ' · ' + (slideIdx.indexOf(current) + 1) + ' / ' + slideIdx.length;
         }
 
         tabs.forEach(t => t.classList.toggle('active', (t.dataset.mode === '3d') ? is3D : !is3D));
-        thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
     }
 
     function go(delta) {
-        const pos = photoIdx.indexOf(current);
+        const pos = slideIdx.indexOf(current);
         const base = pos === -1 ? 0 : pos;
-        current = photoIdx[(base + delta + photoIdx.length) % photoIdx.length];
+        current = slideIdx[(base + delta + slideIdx.length) % slideIdx.length];
         render();
     }
 
     prevBtn.addEventListener('click', () => go(-1));
     nextBtn.addEventListener('click', () => go(1));
-    thumbs.forEach(t => t.addEventListener('click', () => { current = parseInt(t.dataset.i, 10); render(); }));
     tabs.forEach(t => t.addEventListener('click', () => {
         if (t.dataset.mode === '3d') {
             const i = media.findIndex(m => m.type === '3d');
             if (i >= 0) current = i;
         } else {
-            current = photoIdx[0];
+            current = slideIdx[0];
         }
         render();
     }));
-    overlay.querySelector('.pm-planta-btn').addEventListener('click', () => {
-        const i = media.findIndex(m => m.type === 'planta');
-        if (i >= 0) { current = i; render(); }
-    });
 
     render();
 
@@ -294,8 +308,8 @@ function openProjectModal(project) {
     }
     function onKey(e) {
         if (e.key === 'Escape') closeModal();
-        else if (e.key === 'ArrowLeft'  && media[current].type === 'photo') go(-1);
-        else if (e.key === 'ArrowRight' && media[current].type === 'photo') go(1);
+        else if (e.key === 'ArrowLeft'  && media[current].type !== '3d') go(-1);
+        else if (e.key === 'ArrowRight' && media[current].type !== '3d') go(1);
     }
     overlay.querySelector('.pm-close').addEventListener('click', closeModal);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
