@@ -1,673 +1,823 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Impede o iOS de transformar números em links de telefone (azul/sublinhado).
-         Não afeta os links tel: criados manualmente na página. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title>L6 Engenharia</title>
+
+    <title>L6 Engenharia — Projetos residenciais, comerciais e industriais em Luziânia-GO</title>
+    <meta name="description" content="L6 Engenharia: desde 2018 em Luziânia-GO, com projetos residenciais, comerciais e industriais, construção civil, instalações elétricas e hidráulicas, cabeamento estruturado, CFTV e regularização de obras.">
+    <meta name="theme-color" content="#0A2841">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="L6 Engenharia">
+    <meta property="og:title" content="L6 Engenharia — Transformando ideias em realidade">
+    <meta property="og:description" content="Especialistas em projetos residenciais, comerciais e industriais. Telecomunicações, Construção Civil e Energia em Luziânia-GO.">
+    <meta name="twitter:card" content="summary">
+
     <link rel="icon" href="assets/images/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" href="assets/images/brand/l6-mark.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Animações de entrada só com JS ativo; se o script falhar, o conteúdo reaparece -->
+    <script>
+        document.documentElement.classList.add('js');
+        setTimeout(function () { if (!window.L6_READY) document.documentElement.classList.remove('js'); }, 3000);
+    </script>
+
+    <link rel="stylesheet" href="css/style.css?v=2.2">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "GeneralContractor",
+            "name": "L6 Engenharia",
+            "foundingDate": "2018",
+            "telephone": "+55-61-99803-2220",
+            "email": "l6engenharia@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "R. Bate Couro, 258 - Vila Rosário",
+                "addressLocality": "Luziânia",
+                "addressRegion": "GO",
+                "addressCountry": "BR"
+            },
+            "openingHoursSpecification": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            }],
+            "sameAs": [
+                "https://www.instagram.com/l6engenharia/",
+                "https://sketchfab.com/l6engenharia"
+            ]
+        }
+    </script>
 </head>
 <body>
- 
-    <!-- ══ HEADER ══════════════════════════════════════════════════════════ -->
- 
-    <div class="pre-header">
-        <div class="pre-header_cont">
-            
-            <div class="pre-header_esq">
-                <span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    (61) 99803-2220
-                </span>
-                <span class="email-span">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-                    l6engenharia@gmail.com
-                </span>
-                <span class="hora">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    Segunda a Sexta
-                </span>
-            </div>
- 
-            <div class="pre-header_dir">
-                <a href="https://sketchfab.com/l6engenharia" target="_blank" aria-label="Sketchfab">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                </a>
 
-                <a href="https://www.instagram.com/l6engenharia/" target="_blank" aria-label="Instagram">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="white" stroke="none"/>
-                    </svg>
-                </a>
- 
-                <a href="https://api.whatsapp.com/send/?phone=5561998032220&text&type=phone_number&app_absent=0&utm_source=ig" target="_blank" aria-label="WhatsApp">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M20.52 3.48A11.8 11.8 0 0012.05 0C5.5 0 .2 5.3.2 11.85c0 2.1.55 4.15 1.6 5.95L0 24l6.4-1.7a11.85 11.85 0 005.65 1.45h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.15-1.23-6.1-3.39-8.42zM12.06 21.3c-1.8 0-3.56-.48-5.1-1.4l-.36-.21-3.8 1 1.02-3.7-.23-.38a9.3 9.3 0 01-1.43-4.95c0-5.15 4.2-9.35 9.36-9.35 2.5 0 4.85.98 6.62 2.75a9.3 9.3 0 012.73 6.6c0 5.15-4.2 9.35-9.36 9.35zm5.13-6.98c-.28-.14-1.65-.82-1.9-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.36-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.28-1 1-.98 2.44.02 1.44 1.04 2.83 1.19 3.03.14.19 2.05 3.13 4.96 4.38.69.3 1.23.48 1.65.62.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z"/>
-                    </svg>
-                </a>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Ícones: <svg class="ico"><use href="#i-nome"/></svg> -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+        <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 20V4M6 10l6-6 6 6"/></symbol>
+        <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+        <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7.5-6.3-7.5-12a7.5 7.5 0 0 1 15 0c0 5.7-7.5 12-7.5 12z"/><circle cx="12" cy="9.5" r="2.6"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></symbol>
+        <symbol id="i-cube" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29-.25-.12-1.47-.72-1.69-.8-.23-.08-.37-.12-.56.13-.18.25-.64.79-.78.96-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43h-.47"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1.5 12S5.3 4.5 12 4.5 22.5 12 22.5 12 18.7 19.5 12 19.5 1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></symbol>
+        <symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6.5 3.5h11l4 5.5L12 20.5 2.5 9z"/><path d="M2.5 9h19M12 20.5 8.5 9l3.5-5.5L15.5 9z"/></symbol>
+        <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M11 6.3 5 21M13 6.3 19 21M7.4 15h9.2"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21.5h18M5 21.5V9.5l7-6 7 6v12"/><path d="M9.5 21.5v-5h5v5M9 11.5h6"/></symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2 4.5 13.5h7l-1 8.5 9-11.5h-7z"/></symbol>
+        <symbol id="i-network" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="5" rx="1"/><rect x="2.5" y="16.5" width="6" height="5" rx="1"/><rect x="15.5" y="16.5" width="6" height="5" rx="1"/><path d="M12 7.5V12M5.5 16.5V12h13v4.5"/></symbol>
+        <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+        <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9.5 12 2.5l9 7v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 20.5z"/><path d="M9 22v-9h6v9"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+    </svg>
+
+    <!-- Cabeçalho -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="#home" class="brand" aria-label="L6 Engenharia — voltar ao início">
+                <img src="assets/images/brand/l6-mark.png" alt="" width="116" height="192" class="brand__mark">
+                <span class="brand__name"><b>L6</b> Engenharia</span>
+            </a>
+
+            <nav class="nav" aria-label="Menu principal">
+                <ul class="nav__list">
+                    <li><a href="#home" class="nav__link" data-nav="home">Início</a></li>
+                    <li><a href="#sobre" class="nav__link" data-nav="sobre">Sobre</a></li>
+                    <li><a href="#servicos" class="nav__link" data-nav="servicos">Serviços</a></li>
+                    <li><a href="#projetos" class="nav__link" data-nav="projetos">Projetos</a></li>
+                    <li><a href="#contato" class="nav__link" data-nav="contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text=Olá%2C+vim+pelo+site+da+L6+Engenharia+e+gostaria+de+um+orçamento." target="_blank" rel="noopener" class="btn btn--primary header-cta">
+                Solicitar orçamento
+                <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </a>
+
+            <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="menu-btn__bar"></span>
+                <span class="menu-btn__bar"></span>
+            </button>
+        </div>
+        <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__bar"></span></div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
+        <nav class="mobile-menu__nav" aria-label="Menu principal (celular)">
+            <ol class="mobile-menu__list">
+                <li><a href="#home" class="mobile-menu__link"><span>01</span>Início</a></li>
+                <li><a href="#sobre" class="mobile-menu__link"><span>02</span>Sobre</a></li>
+                <li><a href="#servicos" class="mobile-menu__link"><span>03</span>Serviços</a></li>
+                <li><a href="#projetos" class="mobile-menu__link"><span>04</span>Projetos</a></li>
+                <li><a href="#contato" class="mobile-menu__link"><span>05</span>Contato</a></li>
+            </ol>
+        </nav>
+        <div class="mobile-menu__foot">
+            <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text=Olá%2C+vim+pelo+site+da+L6+Engenharia+e+gostaria+de+um+orçamento." target="_blank" rel="noopener" class="btn btn--accent btn--block mobile-menu__cta">
+                <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                Solicitar orçamento
+            </a>
+            <a href="tel:+5561998032220" class="mobile-menu__contact">
+                <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>(61) 9 9803-2220
+            </a>
+            <a href="mailto:l6engenharia@gmail.com" class="mobile-menu__contact">
+                <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>l6engenharia@gmail.com
+            </a>
+            <div class="mobile-menu__social">
+                <a href="https://www.instagram.com/l6engenharia/" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+                <a href="https://sketchfab.com/l6engenharia" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="Sketchfab"><svg class="ico" aria-hidden="true"><use href="#i-cube"/></svg></a>
+                <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text&amp;type=phone_number&amp;app_absent=0&amp;utm_source=ig" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
             </div>
         </div>
     </div>
- 
-    <header class="header">
-        <div class="logo">
-            <img src="assets/images/Logo.png" alt="Logo L6 Engenharia">
-            <a href="#home" class="logo_text">L6 Engenharia</a>
-        </div>
- 
-        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-        </button>
-        
-        <nav class="navbar" id="main-nav" aria-label="Menu principal">
-            <a href="#home"     class="nav-link">Início</a>
-            <a href="#sobre"    class="nav-link">Sobre</a>
-            <a href="#servicos" class="nav-link">Serviços</a>
-            <a href="#projetos" class="nav-link">Projetos</a>
-            <a href="#contato"  class="nav-link">Contato</a>
-        </nav>
-    </header>
- 
-    <div class="nav-overlay" id="nav-overlay"></div>
- 
-    <main>
-        <!-- ══ HOME ════════════════════════════════════════════════════════ -->
-        <section id="home" class="home">
-            <div class="home_conteudo">
-                
-                <h1>Há mais de 8 anos transformando ideias em realidade através de soluções inovadoras</h1>
-                <b><p>Especialistas em projetos residenciais, comerciais e industriais.</p></b>
- 
-                <div class="btn-box">
-                    <a href="#projetos">Ver Projetos</a>
-                    <a href="#contato">Fale Conosco</a>
-                </div>
- 
-                <div class="home-sociais">
-                    <a href="https://sketchfab.com/l6engenharia" target="_blank" aria-label="Sketchfab">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                    </a>
-                    <a href="https://api.whatsapp.com/send/?phone=5561998032220&text&type=phone_number&app_absent=0&utm_source=ig" target="_blank" aria-label="WhatsApp">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.1 16.56 13.98C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.13 13.56 13.67 14.1 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/l6engenharia/" target="_blank" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-                    </a>
-                </div>
-            </div>
- 
-            <div class="logo_home">
-                <img src="assets/images/Logo.png" alt="Logo L6 Engenharia">
-            </div>
-        </section>
- 
-        <!-- ══ SOBRE ═══════════════════════════════════════════════════════ -->
-        <section id="sobre" class="sobre">
- 
-            <div class="sobre-header">
-                <span class="section-label">Quem Somos?</span>
-                <h2 class="section-titulo">Sobre a L6 Engenharia</h2>
-                <div class="section-rule"></div>
-            </div>
- 
-            <div class="sobre_logotext">
-                <div class="logosob">
-                    <img src="assets/images/Logo.png" alt="Logo L6">
-                </div>
-                <div class="textosob">
-                    <p class="texto-sobre">
-                        Fundada em 2018, somos a L6 Engenharia, uma empresa inovadora e independente que atua em diferentes segmentos do setor, incluindo Telecomunicações, Construção Civil e Energia. Trabalhamos com o propósito de oferecer soluções completas e eficientes, sempre alinhadas às necessidades do mercado e dos nossos clientes.
+
+    <main id="conteudo">
+
+        <!-- Hero -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero__grid-bg" aria-hidden="true"></div>
+
+            <div class="container hero__inner">
+                <div class="hero__copy">
+                    <p class="eyebrow hero__eyebrow">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        Há mais de <span data-since="2018">8</span> anos
                     </p>
-                    <p class="texto-sobre">
-                        Contamos com uma equipe qualificada e experiente, que nos permite desenvolver projetos com alto padrão de qualidade, abrangendo desde projetos estruturais e de instalações até reformas e modernizações. Nosso compromisso é entregar resultados com pontualidade, segurança e excelência técnica.
-                    </p>
-                    <p class="texto-sobre">
-                        Ao longo da nossa trajetória, construímos uma base sólida fundamentada no respeito, na seriedade e na inovação. Acreditamos que esses valores são essenciais para garantir a confiança dos nossos clientes e impulsionar o nosso crescimento de forma sustentável.
-                    </p>
-                </div>
-            </div>
- 
-            <div class="cards-grid">
-                <div class="card_sobre">
-                    <div class="card-icon">
-                        <img src="assets/icons/alvo.png" alt="Missão">
-                    </div>
-                    <h3>Missão</h3>
-                    <p><b>Oferecer soluções inovadoras em engenharia civil, superando expectativas e construindo um futuro sustentável.</b></p>
-                </div>
- 
-                <div class="card_sobre">
-                    <div class="card-icon">
-                        <img src="assets/icons/olho.png" alt="Visão">
-                    </div>
-                    <h3>Visão</h3>
-                    <p><b>Ser reconhecida como a principal empresa de engenharia civil da região, referência em qualidade e inovação.</b></p>
-                </div>
- 
-                <div class="card_sobre">
-                    <div class="card-icon">
-                        <img src="assets/icons/coracao.png" alt="Valores">
-                    </div>
-                    <h3>Valores</h3>
-                    <p><b>Excelência, integridade, sustentabilidade, inovação e compromisso com nossos clientes e colaboradores.</b></p>
-                </div>
-            </div>
-        </section>
- 
-        <!-- ══ SERVIÇOS ═════════════════════════════════════════════════════ -->
-        <section class="servicos" id="servicos">
-            <div class="servicos-header">
-                <span class="section-label">Conheça nossos</span>
-                <h2 class="section-titulo">Serviços Prestados</h2>
-                <div class="section-rule"></div>
-            </div>
- 
-            <div class="servicos-container">
-                <div class="txt-servicosesq">
-                    <p>Projetos</p>
-                    <p>Sistema CFTV</p>
-                    <p>Construção Civil</p>
-                    <p>Instalações Elétricas</p>
-                    <p>Instalações Hidráulicas</p>
-                </div>
- 
-                <div class="logoserv">
-                    <img src="assets/images/Logo.png" alt="Logo L6">
-                </div>
- 
-                <div class="txt-servicosdir">
-                    <p>Projetos Estruturais</p>
-                    <p>Instalações Sanitárias</p>
-                    <p>Cabeamento Estruturado</p>
-                    <p>Reformas e Ampliações</p>
-                    <p>Regularização de Obras</p>
-                </div>
-            </div>      
- 
-        </section>
- 
-        <!-- ══ PROJETOS ═════════════════════════════════════════════════════ -->
-        <section class="projetos" id="projetos">
- 
-            <div class="projetos-header">
-                <span class="section-label">Projetos Executados</span>
-                <h2 class="section-titulo">Nosso Portfólio</h2>
-                <div class="section-rule"></div>
-            </div>
-            
-            <div class="projetos_filters" role="group" aria-label="Filtrar projetos">
-                <span class="projetos_item active-work" data-filter="all" role="button" tabindex="0"><b>Todos</b></span>
-                <span class="projetos_item" data-filter=".residencial" role="button" tabindex="0"><b>Residencial</b></span>
-                <span class="projetos_item" data-filter=".comercial" role="button" tabindex="0"><b>Comercial</b></span>
-                <span class="projetos_item" data-filter=".industrial" role="button" tabindex="0"><b>Industrial</b></span>
-            </div>
- 
-            <div class="projetos__container">
 
-                <!-- 1. Residência Moderna -->
-                <div class="projetos__content mix residencial" data-category="residencial"
-                     data-project="residencia-moderna"
-                     data-area="450m²"
-                     data-duration="8 meses"
-                     data-client="Família Festa"
-                     data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
-                     data-subtitle="Casa unifamiliar de alto padrão com arquitetura contemporânea"
-                     data-full-description="Residência com pé-direito duplo, piscina, spa e automação residencial. Design que prioriza iluminação natural e conforto térmico com materiais de alto padrão.">
-                    <img src="assets/images/residencia-moderna.jpg" alt="Residência Moderna" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Residência Moderna</h3>
-                        <p class="projetos__description">Casa de alto padrão com 450m² e design moderno</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    <h1 class="hero__title" id="hero-title">
+                        <span class="line"><span>Transformando</span></span>
+                        <span class="line"><span>ideias em</span></span>
+                        <span class="line"><span class="grad">realidade</span></span>
+                        <span class="line hero__title-sub"><span>através de soluções inovadoras.</span></span>
+                    </h1>
+
+                    <p class="hero__lead">Especialistas em projetos <strong>residenciais</strong>, <strong>comerciais</strong> e <strong>industriais</strong>.</p>
+
+                    <div class="hero__ctas">
+                        <a href="#projetos" class="btn btn--primary">
+                            Ver projetos
+                            <svg class="ico ico--arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                         </a>
+                        <a href="#contato" class="btn btn--ghost">Fale conosco</a>
                     </div>
                 </div>
 
-                <!-- 2. Residência Contemporânea -->
-                <div class="projetos__content mix residencial" data-category="residencial"
-                     data-project="residencia-contemporanea"
-                     data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
-                     data-area="500m²"
-                     data-duration="10 meses"
-                     data-client="Família Souza"
-                     data-subtitle="Residência contemporânea com integração de ambientes e área verde"
-                     data-full-description="Residência com jardins integrados, cinco suítes, home theater, academia e área gourmet. Concebida com materiais de alta durabilidade e baixo impacto ambiental.">
-                    <img src="assets/images/residencia-modernaa.jpg" alt="Residência Contemporânea" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Residência Contemporânea</h3>
-                        <p class="projetos__description">Residência de 500m² com jardins integrados e área gourmet</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
+                <div class="hero__visual">
+                    <div class="hero__dim hero__dim--top" aria-hidden="true">
+                        <span class="hero__dim-label" data-show-label>Residencial</span>
                     </div>
-                </div>
+                    <div class="hero__dim hero__dim--side" aria-hidden="true">
+                        <span class="hero__dim-label"><span data-show-index>01</span> / 03</span>
+                    </div>
 
-                <!-- 3. Condomínio Residencial -->
-                <div class="projetos__content mix residencial"
-                     data-project="condominio-residencial"
-                     data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
-                     data-area="12.000m²"
-                     data-duration="18 meses"
-                     data-client="Construtora Caixeta"
-                     data-subtitle="Condomínio fechado com 120 unidades e infraestrutura completa de lazer"
-                     data-full-description="120 apartamentos em quatro torres com clube, piscinas, academia e quadras esportivas. Infraestrutura viária planejada para fluxo seguro de pedestres e veículos.">
-                    <img src="assets/images/condominio.jpg" alt="Condomínio Residencial" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Condomínio Residencial</h3>
-                        <p class="projetos__description">Condomínio com 120 unidades e área de lazer completa</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
+                    <div class="show" data-show role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
+                        <div class="show__slides">
+                            <figure class="show__slide is-active" data-category="Residencial">
+                                <img src="assets/images/gallery/residencia-moderna-2.webp" alt="Residência Moderna — vista lateral" width="1200" height="806" fetchpriority="high">
+                                <figcaption class="show__caption">
+                                    <span class="show__cat">Residencial</span>
+                                    <span class="show__title">Residência Moderna</span>
+                                </figcaption>
+                                <button type="button" class="show__open" data-open-project="residencia-moderna" aria-label="Ver detalhes do projeto Residência Moderna">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </button>
+                            </figure>
+                            <figure class="show__slide" data-category="Comercial">
+                                <img data-src="assets/images/gallery/centro-empresarial-2.webp" alt="Centro Empresarial — fachada em vidro" width="1200" height="806">
+                                <figcaption class="show__caption">
+                                    <span class="show__cat">Comercial</span>
+                                    <span class="show__title">Centro Empresarial</span>
+                                </figcaption>
+                                <button type="button" class="show__open" data-open-project="centro-empresarial" aria-label="Ver detalhes do projeto Centro Empresarial">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </button>
+                            </figure>
+                            <figure class="show__slide" data-category="Industrial">
+                                <img data-src="assets/images/gallery/galpao-industrial-3.webp" alt="Galpão Industrial — pátio de manobras" width="1200" height="806">
+                                <figcaption class="show__caption">
+                                    <span class="show__cat">Industrial</span>
+                                    <span class="show__title">Galpão Industrial</span>
+                                </figcaption>
+                                <button type="button" class="show__open" data-open-project="galpao-industrial" aria-label="Ver detalhes do projeto Galpão Industrial">
+                                    <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </button>
+                            </figure>
+                        </div>
 
-                <!-- 4. Centro Empresarial -->
-                <div class="projetos__content mix comercial"
-                     data-project="centro-empresarial"
-                     data-area="15.000m²"
-                     data-duration="24 meses"
-                     data-client="Grupo Empresarial ABC"
-                     data-sketchfab="02947e5efa844231b9f532e43683006a"
-                     data-subtitle="Complexo corporativo de alto padrão com 15 pavimentos e certificação LEED"
-                     data-full-description="Torre corporativa com fachada em vidro de alta performance, heliponto, auditório para 200 pessoas e 3 subsolos de estacionamento. Certificação LEED Gold em sustentabilidade.">
-                    <img src="assets/images/edificio-comercial.jpg" alt="Centro Empresarial" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Centro Empresarial</h3>
-                        <p class="projetos__description">Torre corporativa com 15 andares e certificação LEED Gold</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
+                        <div class="show__dots" role="group" aria-label="Escolher projeto em destaque">
+                            <button type="button" class="show__dot is-active" aria-label="Residencial" aria-current="true"><span></span></button>
+                            <button type="button" class="show__dot" aria-label="Comercial"><span></span></button>
+                            <button type="button" class="show__dot" aria-label="Industrial"><span></span></button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- 5. Edifício Comercial Misto -->
-                <div class="projetos__content mix comercial"
-                     data-project="edificio-comercial-misto"
-                     data-sketchfab="02947e5efa844231b9f532e43683006a"
-                     data-area="2.000m²"
-                     data-duration="14 meses"
-                     data-client="Grupo Empresarial DEF"
-                     data-subtitle="Edifício de uso misto com lojas no térreo e salas comerciais nos andares superiores"
-                     data-full-description="Edifício com lojas no térreo e salas comerciais de 30 a 120m² nos andares superiores. Estacionamento rotativo e acessibilidade completa para pessoas com mobilidade reduzida.">
-                    <img src="assets/images/centroo-comercial.jpg" alt="Edifício Comercial Misto" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Edifício Comercial Misto</h3>
-                        <p class="projetos__description">Edifício híbrido com lojas, salas comerciais e certificação LEED</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 6. Shopping Center -->
-                <div class="projetos__content mix comercial"
-                     data-project="shopping-center"
-                     data-sketchfab="02947e5efa844231b9f532e43683006a"
-                     data-area="25.000m²"
-                     data-duration="20 meses"
-                     data-client="Shopping Luziânia"
-                     data-subtitle="Centro de compras e lazer com 80 lojas, praça de alimentação e cinema"
-                     data-full-description="80 lojas, praça de alimentação com 1.200 lugares, cinema multiplex com 6 salas e estacionamento para 1.500 veículos. Conceito arquitetônico com ampla entrada de luz natural.">
-                    <img src="assets/images/shopping.jpg" alt="Shopping Center" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Shopping Center</h3>
-                        <p class="projetos__description">Centro comercial com 80 lojas e cinema multiplex</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 7. Complexo Industrial -->
-                <div class="projetos__content mix industrial"
-                     data-project="complexo-industrial"
-                     data-area="5.000m²"
-                     data-duration="12 meses"
-                     data-client="Indústria XYZ"
-                     data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
-                     data-subtitle="Galpão logístico com estrutura metálica e piso de alta resistência"
-                     data-full-description="Galpão com vão livre de 40m, docas de carregamento, mezanino administrativo, sprinklers e iluminação LED. Tratamento acústico nas áreas de produção.">
-                    <img src="assets/images/galpao-industrial.jpg" alt="Complexo Industrial" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Complexo Industrial</h3>
-                        <p class="projetos__description">Galpão logístico de 5.000m² com estrutura metálica de vão livre</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 8. Galpão Industrial -->
-                <div class="projetos__content mix industrial"
-                     data-project="galpao-industrial"
-                     data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
-                     data-area="4.000m²"
-                     data-duration="12 meses"
-                     data-client="Indústria XYZ"
-                     data-subtitle="Galpão de produção com layout otimizado para linha de manufatura"
-                     data-full-description="Projeto industrial desenvolvido sob medida para uma linha de manufatura de componentes eletrônicos. O layout foi concebido para otimizar o fluxo de produção, com zonas segregadas para recebimento, produção, qualidade e expedição. A cobertura em telha termoacústica garante conforto térmico no ambiente de trabalho. O projeto contempla subestação de energia, câmaras de pressão positiva e sala limpa.">
-                    <img src="assets/images/obra-industrial.jpg" alt="Galpão Industrial" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Galpão Industrial</h3>
-                        <p class="projetos__description">Galpão de manufatura com sala limpa e câmaras de pressão positiva</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 9. Planta Industrial -->
-                <div class="projetos__content mix industrial"
-                     data-project="planta-industrial"
-                     data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
-                     data-area="8.000m²"
-                     data-duration="16 meses"
-                     data-client="Indústria ABC"
-                     data-subtitle="Planta industrial de grande porte com área administrativa integrada"
-                     data-full-description="Complexo com área fabril, depósito e bloco administrativo integrados. Refeitório para 300 funcionários, subestação de alta tensão e sistema de tratamento de efluentes.">
-                    <img src="assets/images/industriaa.jpg" alt="Planta Industrial" class="projetos__img" loading="lazy">
-                    <div class="projetos__data">
-                        <h3 class="projetos__title">Planta Industrial</h3>
-                        <p class="projetos__description">Complexo fabril de 8.000m² com bloco administrativo integrado</p>
-                        <a href="#" class="button button--flex button--small projetos__button">
-                            Ver Detalhes
-                            <svg class="button__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
- 
-        <!-- ══ CONTATO ═════════════════════════════════════════════════════ -->
-        <section id="contato" class="contato">
-
-            <div class="contato-header">
-                <span class="section-label">Entre em Contato</span>
-                <h2 class="section-titulo">Fale Conosco</h2>
-                <div class="section-rule"></div>
-            </div>
-
-            <!-- Prova social -->
-            <div class="contato-proof">
-                <div class="proof-card">
-                    <div class="proof-ico">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    </div>
-                    <div>
-                        <div class="proof-num">600.000m²+</div>
-                        <div class="proof-sub">Projetos entregues</div>
-                    </div>
-                </div>
-                <div class="proof-card">
-                    <div class="proof-ico">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    </div>
-                    <div>
-                        <div class="proof-num">8 anos</div>
-                        <div class="proof-sub">De experiência</div>
-                    </div>
-                </div>
-                <div class="proof-card">
-                    <div class="proof-ico">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div>
-                        <div class="proof-num">5.0 ★</div>
-                        <div class="proof-sub">No Google</div>
+                    <div class="hero__badge">
+                        <span class="hero__badge-num">600.000<small>m²+</small></span>
+                        <span class="hero__badge-label">Projetos entregues</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card principal -->
-            <div class="contato-card">
-
-                <!-- Esquerdo: informações -->
-                <div class="contato-info">
-                    <div>
-                        <h3>Vamos entrar em contato!</h3>
-                        <p class="contato-info-desc">Nossa equipe está pronta para atender com profissionalismo e agilidade. Para orçamentos, dúvidas ou conhecer nossos serviços.</p>
-                    </div>
-
-                    <div class="contato-items">
-                        <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" class="contato-item">
-                            <div class="contato-item-ico">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <span>R. Bate Couro, 258 — Vila Rosário</span>
-                        </a>
-                        <a href="mailto:l6engenharia@gmail.com" class="contato-item">
-                            <div class="contato-item-ico">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            </div>
-                            <span>l6engenharia@gmail.com</span>
-                        </a>
-                        <a href="tel:+5561998032220" class="contato-item">
-                            <div class="contato-item-ico">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            </div>
-                            <span>(61) 9 9803-2220</span>
-                        </a>
-                    </div>
-
-                    <div class="contato-sep"></div>
-
-                    <div class="contato-hours">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="container">
+                <ul class="hero__meta">
+                    <li>
+                        <span class="meta-label">Telefone</span>
+                        <a href="tel:+5561998032220">(61) 9 9803-2220</a>
+                    </li>
+                    <li>
+                        <span class="meta-label">E-mail</span>
+                        <a href="mailto:l6engenharia@gmail.com">l6engenharia@gmail.com</a>
+                    </li>
+                    <li>
+                        <span class="meta-label">Atendimento</span>
                         <span>Segunda a Sexta · 8h às 18h</span>
+                    </li>
+                    <li class="hero__meta-social">
+                        <span class="meta-label">Redes</span>
+                        <span class="hero__social">
+                            <a href="https://sketchfab.com/l6engenharia" target="_blank" rel="noopener" class="icon-btn" aria-label="Sketchfab"><svg class="ico" aria-hidden="true"><use href="#i-cube"/></svg></a>
+                            <a href="https://www.instagram.com/l6engenharia/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+                            <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text&amp;type=phone_number&amp;app_absent=0&amp;utm_source=ig" target="_blank" rel="noopener" class="icon-btn" aria-label="WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Faixa de serviços (decorativa) -->
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker__track">
+                <ul class="ticker__group">
+                    <li>Projetos Estruturais</li><li>Construção Civil</li><li>Instalações Elétricas</li><li>Instalações Hidráulicas</li><li>Cabeamento Estruturado</li><li>Sistema CFTV</li><li>Reformas e Ampliações</li><li>Regularização de Obras</li><li>Instalações Sanitárias</li>
+                </ul>
+                <ul class="ticker__group">
+                    <li>Projetos Estruturais</li><li>Construção Civil</li><li>Instalações Elétricas</li><li>Instalações Hidráulicas</li><li>Cabeamento Estruturado</li><li>Sistema CFTV</li><li>Reformas e Ampliações</li><li>Regularização de Obras</li><li>Instalações Sanitárias</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sobre -->
+        <section id="sobre" class="section about" aria-labelledby="sobre-title">
+            <div class="container">
+                <div class="about__top">
+                    <div class="sec-head about__head" data-reveal>
+                        <p class="eyebrow"><span class="eyebrow__num">01</span>Quem somos</p>
+                        <h2 class="h2" id="sobre-title">Sobre a <span class="grad">L6 Engenharia</span></h2>
                     </div>
 
-                    <div>
-                        <p class="contato-soc-label">Redes sociais</p>
-                        <div class="contato-soc-row">
-                            <a href="https://sketchfab.com/l6engenharia" target="_blank" class="contato-soc" aria-label="Sketchfab">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                            </a>
-                            <a href="https://api.whatsapp.com/send/?phone=5561998032220&text&type=phone_number&app_absent=0&utm_source=ig" target="_blank" class="contato-soc" aria-label="WhatsApp">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.1 16.56 13.98C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.13 13.56 13.67 14.1 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z"/></svg>
-                            </a>
-                            <a href="https://www.instagram.com/l6engenharia/" target="_blank" class="contato-soc" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-                            </a>
+                    <div class="about__body">
+                        <p class="about__lead" data-reveal>
+                            Fundada em 2018, somos a L6 Engenharia, uma empresa inovadora e independente que atua em diferentes segmentos do setor, incluindo <strong>Telecomunicações, Construção Civil e Energia</strong>.
+                        </p>
+                        <div class="about__cols" data-reveal>
+                            <p>Trabalhamos com o propósito de oferecer soluções completas e eficientes, sempre alinhadas às necessidades do mercado e dos nossos clientes.</p>
+                            <p>Contamos com uma equipe qualificada e experiente, que nos permite desenvolver projetos com alto padrão de qualidade, abrangendo desde projetos estruturais e de instalações até reformas e modernizações. Nosso compromisso é entregar resultados com pontualidade, segurança e excelência técnica.</p>
+                            <p>Ao longo da nossa trajetória, construímos uma base sólida fundamentada no respeito, na seriedade e na inovação. Acreditamos que esses valores são essenciais para garantir a confiança dos nossos clientes e impulsionar o nosso crescimento de forma sustentável.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Direito: CTA -->
-                <div class="contato-cta">
-
-                    <div id="contato-avail-badge"></div>
-
-                    <div>
-                        <p class="contato-cta-label">Atendimento rápido</p>
-                        <h3>Escolha como prefere falar com a gente</h3>
-                        <p class="contato-cta-desc">Resposta imediata pelo WhatsApp ou no canal que for melhor pra você.</p>
+                <dl class="stats" data-stagger>
+                    <div class="stat">
+                        <dt class="stat__label">Ano de fundação</dt>
+                        <dd class="stat__value"><span>2018</span></dd>
                     </div>
+                    <div class="stat">
+                        <dt class="stat__label">Anos de experiência</dt>
+                        <dd class="stat__value"><span data-since="2018" data-count>8</span><small>+</small></dd>
+                    </div>
+                    <div class="stat">
+                        <dt class="stat__label">Projetos entregues</dt>
+                        <dd class="stat__value"><span data-count>600.000</span><small>m²+</small></dd>
+                    </div>
+                    <div class="stat">
+                        <dt class="stat__label">Avaliação no Google</dt>
+                        <dd class="stat__value"><span data-count data-decimals="1">5,0</span><small><svg class="ico ico--star" aria-hidden="true"><use href="#i-star"/></svg></small></dd>
+                    </div>
+                </dl>
 
-                    <div class="contato-btn-group">
-                        <a href="https://api.whatsapp.com/send/?phone=5561998032220&text=Olá%2C+vim+pelo+site+da+L6+Engenharia+e+gostaria+de+um+orçamento." target="_blank" class="contato-btn contato-btn-wa">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0012.05 0C5.5 0 .2 5.3.2 11.85c0 2.1.55 4.15 1.6 5.95L0 24l6.4-1.7a11.85 11.85 0 005.65 1.45h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.15-1.23-6.1-3.39-8.42zM12.06 21.3c-1.8 0-3.56-.48-5.1-1.4l-.36-.21-3.8 1 1.02-3.7-.23-.38a9.3 9.3 0 01-1.43-4.95c0-5.15 4.2-9.35 9.36-9.35 2.5 0 4.85.98 6.62 2.75a9.3 9.3 0 012.73 6.6c0 5.15-4.2 9.35-9.36 9.35zm5.13-6.98c-.28-.14-1.65-.82-1.9-.92-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.36-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.64-1.54-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.28-1 1-.98 2.44.02 1.44 1.04 2.83 1.19 3.03.14.19 2.05 3.13 4.96 4.38.69.3 1.23.48 1.65.62.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z"/></svg>
-                            Falar pelo WhatsApp
-                        </a>
-                        <div class="contato-reply">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            <span id="contato-reply-msg">Respondemos em até 1h</span>
+                <div class="pillars" data-stagger>
+                    <article class="pillar pillar--dark">
+                        <div class="pillar__top">
+                            <span class="pillar__icon"><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg></span>
                         </div>
-                    </div>
-
-                    <div class="contato-csep"></div>
-
-                    <div class="contato-btn-group">
-                        <a href="mailto:l6engenharia@gmail.com" class="contato-btn contato-btn-ghost">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            Enviar um e-mail
-                        </a>
-                        <a href="tel:+5561998032220" class="contato-btn contato-btn-ghost">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            Ligar agora
-                        </a>
-                    </div>
-
+                        <h3 class="pillar__title">Missão</h3>
+                        <p>Oferecer soluções inovadoras em engenharia civil, superando expectativas e construindo um futuro sustentável.</p>
+                    </article>
+                    <article class="pillar">
+                        <div class="pillar__top">
+                            <span class="pillar__icon"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></span>
+                        </div>
+                        <h3 class="pillar__title">Visão</h3>
+                        <p>Ser reconhecida como a principal empresa de engenharia civil da região, referência em qualidade e inovação.</p>
+                    </article>
+                    <article class="pillar">
+                        <div class="pillar__top">
+                            <span class="pillar__icon"><svg class="ico" aria-hidden="true"><use href="#i-diamond"/></svg></span>
+                        </div>
+                        <h3 class="pillar__title">Valores</h3>
+                        <p>Excelência, integridade, sustentabilidade, inovação e compromisso com nossos clientes e colaboradores.</p>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <!-- Mapa -->
-            <div class="contato-map">
-                <iframe
-                    src="https://maps.google.com/maps?q=R.+Bate+Couro,+258,+Luzi%C3%A2nia,+GO,+Brasil&output=embed&hl=pt-BR"
-                    title="Localização da L6 Engenharia"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    allowfullscreen>
-                </iframe>
-                <div class="contato-map-bar">
-                    <div class="contato-map-addr">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>R. Bate Couro, 258 — Vila Rosário, Luziânia – GO</span>
+        <!-- Serviços -->
+        <section id="servicos" class="section services on-dark" aria-labelledby="servicos-title">
+            <div class="blueprint" aria-hidden="true"></div>
+            <div class="container">
+                <div class="services__head">
+                    <div class="sec-head" data-reveal>
+                        <p class="eyebrow"><span class="eyebrow__num">02</span>Conheça nossos</p>
+                        <h2 class="h2" id="servicos-title">Serviços <span class="grad">prestados</span></h2>
                     </div>
-                    <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" class="contato-map-link" aria-label="Ver no Google Maps">
-                        Ver no Google Maps
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <p class="services__intro" data-reveal>
+                        Soluções completas e eficientes, desde projetos estruturais e de instalações até reformas e modernizações.
+                    </p>
+                </div>
+
+                <div class="services__grid" data-stagger>
+                    <article class="svc">
+                        <div class="svc__top">
+                            <svg class="ico svc__icon" aria-hidden="true"><use href="#i-compass"/></svg>
+                        </div>
+                        <h3 class="svc__title">Projetos</h3>
+                        <ul class="svc__list">
+                            <li>Projetos</li>
+                            <li>Projetos Estruturais</li>
+                        </ul>
+                    </article>
+                    <article class="svc">
+                        <div class="svc__top">
+                            <svg class="ico svc__icon" aria-hidden="true"><use href="#i-building"/></svg>
+                        </div>
+                        <h3 class="svc__title">Construção</h3>
+                        <ul class="svc__list">
+                            <li>Construção Civil</li>
+                            <li>Reformas e Ampliações</li>
+                            <li>Regularização de Obras</li>
+                        </ul>
+                    </article>
+                    <article class="svc">
+                        <div class="svc__top">
+                            <svg class="ico svc__icon" aria-hidden="true"><use href="#i-bolt"/></svg>
+                        </div>
+                        <h3 class="svc__title">Instalações</h3>
+                        <ul class="svc__list">
+                            <li>Instalações Elétricas</li>
+                            <li>Instalações Hidráulicas</li>
+                            <li>Instalações Sanitárias</li>
+                        </ul>
+                    </article>
+                    <article class="svc">
+                        <div class="svc__top">
+                            <svg class="ico svc__icon" aria-hidden="true"><use href="#i-network"/></svg>
+                        </div>
+                        <h3 class="svc__title">Telecomunicações</h3>
+                        <ul class="svc__list">
+                            <li>Cabeamento Estruturado</li>
+                            <li>Sistema CFTV</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="services__cta" data-reveal>
+                    <p>Para orçamentos, dúvidas ou para conhecer nossos serviços, fale com a nossa equipe.</p>
+                    <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text=Olá%2C+vim+pelo+site+da+L6+Engenharia+e+gostaria+de+um+orçamento." target="_blank" rel="noopener" class="btn btn--accent">
+                        <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        Solicitar orçamento
                     </a>
                 </div>
             </div>
+        </section>
 
+        <!-- Projetos: os data-* de cada card alimentam o modal; as fotos extras ficam em js/script.js -->
+        <section id="projetos" class="section projects" aria-labelledby="projetos-title">
+            <div class="container">
+                <div class="projects__head">
+                    <div class="sec-head" data-reveal>
+                        <p class="eyebrow"><span class="eyebrow__num">03</span>Projetos executados</p>
+                        <h2 class="h2" id="projetos-title">Nosso <span class="grad">portfólio</span></h2>
+                    </div>
+
+                    <div class="filters" role="group" aria-label="Filtrar projetos por categoria" data-reveal>
+                        <span class="filters__indicator" aria-hidden="true"></span>
+                        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos <span class="filter__count">9</span></button>
+                        <button type="button" class="filter" data-filter="residencial" aria-pressed="false">Residencial <span class="filter__count">3</span></button>
+                        <button type="button" class="filter" data-filter="comercial" aria-pressed="false">Comercial <span class="filter__count">3</span></button>
+                        <button type="button" class="filter" data-filter="industrial" aria-pressed="false">Industrial <span class="filter__count">3</span></button>
+                    </div>
+                </div>
+
+                <p class="sr-only" id="proj-status" aria-live="polite"></p>
+
+                <div class="proj-grid">
+
+                    <!-- 1. Residência Moderna -->
+                    <article class="proj" data-reveal data-category="residencial"
+                        data-project="residencia-moderna"
+                        data-area="450m²"
+                        data-duration="8 meses"
+                        data-client="Família Festa"
+                        data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
+                        data-subtitle="Casa unifamiliar de alto padrão com arquitetura contemporânea"
+                        data-full-description="Residência com pé-direito duplo, piscina, spa e automação residencial. Design que prioriza iluminação natural e conforto térmico com materiais de alto padrão.">
+                        <div class="proj__media">
+                            <img src="assets/images/residencia-moderna.webp" alt="Residência Moderna" class="proj__img" width="1000" height="663" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Residencial</span><span>450 m²</span></p>
+                            <h3 class="proj__title">Residência Moderna</h3>
+                            <p class="proj__desc">Casa de alto padrão com 450m² e design moderno</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 2. Residência Contemporânea -->
+                    <article class="proj" data-reveal data-category="residencial"
+                        data-project="residencia-contemporanea"
+                        data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
+                        data-area="500m²"
+                        data-duration="10 meses"
+                        data-client="Família Souza"
+                        data-subtitle="Residência contemporânea com integração de ambientes e área verde"
+                        data-full-description="Residência com jardins integrados, cinco suítes, home theater, academia e área gourmet. Concebida com materiais de alta durabilidade e baixo impacto ambiental.">
+                        <div class="proj__media">
+                            <img src="assets/images/residencia-modernaa.webp" alt="Residência Contemporânea" class="proj__img" width="1050" height="590" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Residencial</span><span>500 m²</span></p>
+                            <h3 class="proj__title">Residência Contemporânea</h3>
+                            <p class="proj__desc">Residência de 500m² com jardins integrados e área gourmet</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 3. Condomínio Residencial -->
+                    <article class="proj" data-reveal data-category="residencial"
+                        data-project="condominio-residencial"
+                        data-sketchfab="a44e9dc0e4b14c36a4798b64042b5bd6"
+                        data-area="12.000m²"
+                        data-duration="18 meses"
+                        data-client="Construtora Caixeta"
+                        data-subtitle="Condomínio fechado com 120 unidades e infraestrutura completa de lazer"
+                        data-full-description="120 apartamentos em quatro torres com clube, piscinas, academia e quadras esportivas. Infraestrutura viária planejada para fluxo seguro de pedestres e veículos.">
+                        <div class="proj__media">
+                            <img src="assets/images/condominio.webp" alt="Condomínio Residencial" class="proj__img" width="1024" height="500" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Residencial</span><span>12.000 m²</span></p>
+                            <h3 class="proj__title">Condomínio Residencial</h3>
+                            <p class="proj__desc">Condomínio com 120 unidades e área de lazer completa</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 4. Centro Empresarial -->
+                    <article class="proj" data-reveal data-category="comercial"
+                        data-project="centro-empresarial"
+                        data-area="15.000m²"
+                        data-duration="24 meses"
+                        data-client="Grupo Empresarial ABC"
+                        data-sketchfab="02947e5efa844231b9f532e43683006a"
+                        data-subtitle="Complexo corporativo de alto padrão com 15 pavimentos e certificação LEED"
+                        data-full-description="Torre corporativa com fachada em vidro de alta performance, heliponto, auditório para 200 pessoas e 3 subsolos de estacionamento. Certificação LEED Gold em sustentabilidade.">
+                        <div class="proj__media">
+                            <img src="assets/images/edificio-comercial.webp" alt="Centro Empresarial" class="proj__img" width="1045" height="587" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Comercial</span><span>15.000 m²</span></p>
+                            <h3 class="proj__title">Centro Empresarial</h3>
+                            <p class="proj__desc">Torre corporativa com 15 andares e certificação LEED Gold</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 5. Edifício Comercial Misto -->
+                    <article class="proj" data-reveal data-category="comercial"
+                        data-project="edificio-comercial-misto"
+                        data-sketchfab="02947e5efa844231b9f532e43683006a"
+                        data-area="2.000m²"
+                        data-duration="14 meses"
+                        data-client="Grupo Empresarial DEF"
+                        data-subtitle="Edifício de uso misto com lojas no térreo e salas comerciais nos andares superiores"
+                        data-full-description="Edifício com lojas no térreo e salas comerciais de 30 a 120m² nos andares superiores. Estacionamento rotativo e acessibilidade completa para pessoas com mobilidade reduzida.">
+                        <div class="proj__media">
+                            <img src="assets/images/centroo-comercial.webp" alt="Edifício Comercial Misto" class="proj__img" width="1040" height="680" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Comercial</span><span>2.000 m²</span></p>
+                            <h3 class="proj__title">Edifício Comercial Misto</h3>
+                            <p class="proj__desc">Edifício híbrido com lojas, salas comerciais e certificação LEED</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 6. Shopping Center -->
+                    <article class="proj" data-reveal data-category="comercial"
+                        data-project="shopping-center"
+                        data-sketchfab="02947e5efa844231b9f532e43683006a"
+                        data-area="25.000m²"
+                        data-duration="20 meses"
+                        data-client="Shopping Luziânia"
+                        data-subtitle="Centro de compras e lazer com 80 lojas, praça de alimentação e cinema"
+                        data-full-description="80 lojas, praça de alimentação com 1.200 lugares, cinema multiplex com 6 salas e estacionamento para 1.500 veículos. Conceito arquitetônico com ampla entrada de luz natural.">
+                        <div class="proj__media">
+                            <img src="assets/images/shopping.webp" alt="Shopping Center" class="proj__img" width="900" height="500" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Comercial</span><span>25.000 m²</span></p>
+                            <h3 class="proj__title">Shopping Center</h3>
+                            <p class="proj__desc">Centro comercial com 80 lojas e cinema multiplex</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 7. Complexo Industrial -->
+                    <article class="proj" data-reveal data-category="industrial"
+                        data-project="complexo-industrial"
+                        data-area="5.000m²"
+                        data-duration="12 meses"
+                        data-client="Indústria XYZ"
+                        data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
+                        data-subtitle="Galpão logístico com estrutura metálica e piso de alta resistência"
+                        data-full-description="Galpão com vão livre de 40m, docas de carregamento, mezanino administrativo, sprinklers e iluminação LED. Tratamento acústico nas áreas de produção.">
+                        <div class="proj__media">
+                            <img src="assets/images/galpao-industrial.webp" alt="Complexo Industrial" class="proj__img" width="768" height="409" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Industrial</span><span>5.000 m²</span></p>
+                            <h3 class="proj__title">Complexo Industrial</h3>
+                            <p class="proj__desc">Galpão logístico de 5.000m² com estrutura metálica de vão livre</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 8. Galpão Industrial -->
+                    <article class="proj" data-reveal data-category="industrial"
+                        data-project="galpao-industrial"
+                        data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
+                        data-area="4.000m²"
+                        data-duration="12 meses"
+                        data-client="Indústria XYZ"
+                        data-subtitle="Galpão de produção com layout otimizado para linha de manufatura"
+                        data-full-description="Projeto industrial desenvolvido sob medida para uma linha de manufatura de componentes eletrônicos. O layout foi concebido para otimizar o fluxo de produção, com zonas segregadas para recebimento, produção, qualidade e expedição. A cobertura em telha termoacústica garante conforto térmico no ambiente de trabalho. O projeto contempla subestação de energia, câmaras de pressão positiva e sala limpa.">
+                        <div class="proj__media">
+                            <img src="assets/images/obra-industrial.webp" alt="Galpão Industrial" class="proj__img" width="790" height="490" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Industrial</span><span>4.000 m²</span></p>
+                            <h3 class="proj__title">Galpão Industrial</h3>
+                            <p class="proj__desc">Galpão de manufatura com sala limpa e câmaras de pressão positiva</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                    <!-- 9. Planta Industrial -->
+                    <article class="proj" data-reveal data-category="industrial"
+                        data-project="planta-industrial"
+                        data-sketchfab="e71e46dc2f2b483b9c5450a57899e257"
+                        data-area="8.000m²"
+                        data-duration="16 meses"
+                        data-client="Indústria ABC"
+                        data-subtitle="Planta industrial de grande porte com área administrativa integrada"
+                        data-full-description="Complexo com área fabril, depósito e bloco administrativo integrados. Refeitório para 300 funcionários, subestação de alta tensão e sistema de tratamento de efluentes.">
+                        <div class="proj__media">
+                            <img src="assets/images/industriaa.webp" alt="Planta Industrial" class="proj__img" width="800" height="450" loading="lazy" decoding="async">
+                            <span class="proj__badge" aria-hidden="true">Ver projeto</span>
+                        </div>
+                        <div class="proj__body">
+                            <p class="proj__meta"><span>Industrial</span><span>8.000 m²</span></p>
+                            <h3 class="proj__title">Planta Industrial</h3>
+                            <p class="proj__desc">Complexo fabril de 8.000m² com bloco administrativo integrado</p>
+                            <button type="button" class="proj__btn">Ver detalhes <span class="proj__btn-ico"><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="section contact" aria-labelledby="contato-title">
+            <div class="container">
+                <div class="contact__grid">
+
+                    <div class="contact__info">
+                        <div class="sec-head" data-reveal>
+                            <p class="eyebrow"><span class="eyebrow__num">04</span>Entre em contato</p>
+                            <h2 class="h2" id="contato-title">Fale <span class="grad">conosco</span></h2>
+                        </div>
+                        <p class="contact__lead" data-reveal>Nossa equipe está pronta para atender com profissionalismo e agilidade. Para orçamentos, dúvidas ou conhecer nossos serviços.</p>
+
+                        <ul class="contact-list" data-stagger>
+                            <li>
+                                <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" rel="noopener" class="contact-row">
+                                    <span class="contact-row__label"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Endereço</span>
+                                    <span class="contact-row__value">R. Bate Couro, 258 — Vila Rosário, Luziânia – GO</span>
+                                    <svg class="ico contact-row__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:l6engenharia@gmail.com" class="contact-row">
+                                    <span class="contact-row__label"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>E-mail</span>
+                                    <span class="contact-row__value">l6engenharia@gmail.com</span>
+                                    <svg class="ico contact-row__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+5561998032220" class="contact-row">
+                                    <span class="contact-row__label"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Telefone</span>
+                                    <span class="contact-row__value">(61) 9 9803-2220</span>
+                                    <svg class="ico contact-row__arrow" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="contact-row contact-row--static">
+                                    <span class="contact-row__label"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Horário</span>
+                                    <span class="contact-row__value">Segunda a Sexta · 8h às 18h</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="contact__social" data-reveal>
+                            <p class="meta-label">Redes sociais</p>
+                            <div class="social-pills">
+                                <a href="https://www.instagram.com/l6engenharia/" target="_blank" rel="noopener" class="pill"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
+                                <a href="https://sketchfab.com/l6engenharia" target="_blank" rel="noopener" class="pill"><svg class="ico" aria-hidden="true"><use href="#i-cube"/></svg>Sketchfab</a>
+                                <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text&amp;type=phone_number&amp;app_absent=0&amp;utm_source=ig" target="_blank" rel="noopener" class="pill"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="contact-card on-dark" aria-labelledby="contato-card-title" data-reveal>
+                        <img src="assets/images/brand/l6-mark.png" alt="" class="contact-card__mark" width="116" height="192" loading="lazy">
+
+                        <div id="contato-avail-badge"></div>
+
+                        <div>
+                            <p class="eyebrow">Atendimento rápido</p>
+                            <h3 class="contact-card__title" id="contato-card-title">Escolha como prefere falar com a gente</h3>
+                            <p class="contact-card__desc">Resposta imediata pelo WhatsApp ou no canal que for melhor pra você.</p>
+                        </div>
+
+                        <div class="contact-card__main">
+                            <a href="https://api.whatsapp.com/send/?phone=5561998032220&amp;text=Olá%2C+vim+pelo+site+da+L6+Engenharia+e+gostaria+de+um+orçamento." target="_blank" rel="noopener" class="btn btn--accent btn--block btn--lg">
+                                <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                                Falar pelo WhatsApp
+                            </a>
+                            <p class="contact-card__reply">
+                                <svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>
+                                <span id="contato-reply-msg">Respondemos em até 1h</span>
+                            </p>
+                        </div>
+
+                        <div class="contact-card__alt">
+                            <a href="mailto:l6engenharia@gmail.com" class="btn btn--ghost-light btn--block">
+                                <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>
+                                Enviar um e-mail
+                            </a>
+                            <a href="tel:+5561998032220" class="btn btn--ghost-light btn--block">
+                                <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+                                Ligar agora
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="map" data-reveal>
+                    <iframe
+                        src="https://maps.google.com/maps?q=R.+Bate+Couro,+258,+Luzi%C3%A2nia,+GO,+Brasil&amp;output=embed&amp;hl=pt-BR"
+                        title="Mapa com a localização da L6 Engenharia"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                    <div class="map__bar">
+                        <span class="map__addr">
+                            <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
+                            R. Bate Couro, 258 — Vila Rosário, Luziânia – GO
+                        </span>
+                        <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" rel="noopener" class="map__link">
+                            Ver no Google Maps
+                            <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
- 
-    <footer class="footer">
- 
-        <!-- Onda decorativa no topo -->
-        <div class="footer__wave" aria-hidden="true">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#0A2841"/>
-            </svg>
-        </div>
-    
-        <div class="footer__main">
-            <div class="footer__grid">
-    
-                <!-- Coluna 1: Marca -->
-                <div class="footer__col footer__col--brand">
-                    <div class="footer__logo-wrap">
-                        <img src="assets/images/Logo.png" alt="Logo L6 Engenharia" class="footer__logo-img">
-                        <span class="footer__logo-name">L6 Engenharia</span>
-                    </div>
-                    <p class="footer__desc">
-                        Transformando ideias em estruturas sólidas há mais de 8 anos. Especialistas em projetos residenciais, comerciais e industriais com excelência e inovação.
+
+    <!-- Rodapé -->
+    <footer class="site-footer on-dark">
+        <div class="container">
+            <div class="footer-cta" data-reveal>
+                <p class="eyebrow">Entre em contato</p>
+                <a href="#contato" class="footer-cta__link">
+                    <span>Vamos entrar em contato!</span>
+                    <span class="footer-cta__arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow-up-right"/></svg></span>
+                </a>
+            </div>
+
+            <div class="footer-grid" data-stagger>
+                <div class="footer-col footer-col--brand">
+                    <a href="#home" class="brand brand--light" aria-label="L6 Engenharia — voltar ao início">
+                        <img src="assets/images/brand/l6-mark.png" alt="" width="116" height="192" class="brand__mark" loading="lazy">
+                        <span class="brand__name"><b>L6</b> Engenharia</span>
+                    </a>
+                    <p class="footer-desc">
+                        Transformando ideias em estruturas sólidas há mais de <span data-since="2018">8</span> anos. Especialistas em projetos residenciais, comerciais e industriais com excelência e inovação.
                     </p>
-                    <!-- Redes Sociais -->
-                    <div class="footer__socials">
-                        <a href="https://sketchfab.com/l6engenharia" target="_blank" aria-label="Sketchfab" class="footer__social-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                        </a>
-                        <a href="https://www.instagram.com/l6engenharia/" target="_blank" aria-label="Instagram" class="footer__social-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
-                            </svg>
-                        </a>
-                        <a href="https://api.whatsapp.com/send/?phone=5561998032220" target="_blank" aria-label="WhatsApp" class="footer__social-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.1 16.56 13.98C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.13 13.56 13.67 14.1 13.53 14.27C13.38 14.44 13.24 14.46 13 14.34C12.74 14.21 11.94 13.95 11 13.11C10.26 12.45 9.77 11.64 9.62 11.39C9.5 11.15 9.61 11 9.73 10.89C9.84 10.78 10 10.6 10.1 10.45C10.23 10.31 10.27 10.2 10.35 10.04C10.43 9.87 10.39 9.73 10.33 9.61C10.27 9.5 9.77 8.26 9.56 7.77C9.36 7.29 9.16 7.35 9 7.34C8.86 7.34 8.7 7.33 8.53 7.33Z"/>
-                            </svg>
-                        </a>
+                    <div class="footer-social">
+                        <a href="https://sketchfab.com/l6engenharia" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="Sketchfab"><svg class="ico" aria-hidden="true"><use href="#i-cube"/></svg></a>
+                        <a href="https://www.instagram.com/l6engenharia/" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+                        <a href="https://api.whatsapp.com/send/?phone=5561998032220" target="_blank" rel="noopener" class="icon-btn icon-btn--dark" aria-label="WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
                     </div>
                 </div>
-    
-                <!-- Coluna 2: Links rápidos -->
-                <div class="footer__col">
-                    <h4 class="footer__heading">
-                        <span class="footer__heading-bar"></span>
-                        Links Rápidos
-                    </h4>
-                    <nav aria-label="Links rápidos do rodapé">
-                        <ul class="footer__links">
-                            <li><a href="#home"     class="footer__link"><span class="footer__link-arrow">›</span> Início</a></li>
-                            <li><a href="#sobre"    class="footer__link"><span class="footer__link-arrow">›</span> Sobre</a></li>
-                            <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Serviços</a></li>
-                            <li><a href="#projetos" class="footer__link"><span class="footer__link-arrow">›</span> Projetos</a></li>
-                            <li><a href="#contato"  class="footer__link"><span class="footer__link-arrow">›</span> Contato</a></li>
-                        </ul>
-                    </nav>
-                </div>
-    
-                <!-- Coluna 3: Serviços -->
-                <div class="footer__col">
-                    <h4 class="footer__heading">
-                        <span class="footer__heading-bar"></span>
-                        Serviços
-                    </h4>
-                    <ul class="footer__links">
-                        <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Projetos Estruturais</a></li>
-                        <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Instalações Elétricas</a></li>
-                        <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Instalações Hidráulicas</a></li>
-                        <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Cabeamento Estruturado</a></li>
-                        <li><a href="#servicos" class="footer__link"><span class="footer__link-arrow">›</span> Regularização de Obras</a></li>
+
+                <nav class="footer-col" aria-label="Links rápidos do rodapé">
+                    <h2 class="footer-heading">Links rápidos</h2>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+
+                <div class="footer-col">
+                    <h2 class="footer-heading">Serviços</h2>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Projetos Estruturais</a></li>
+                        <li><a href="#servicos">Instalações Elétricas</a></li>
+                        <li><a href="#servicos">Instalações Hidráulicas</a></li>
+                        <li><a href="#servicos">Cabeamento Estruturado</a></li>
+                        <li><a href="#servicos">Regularização de Obras</a></li>
                     </ul>
                 </div>
-    
-                <!-- Coluna 4: Contato -->
-                <div class="footer__col">
-                    <h4 class="footer__heading">
-                        <span class="footer__heading-bar"></span>
-                        Contato
-                    </h4>
-                    <address class="footer__contact">
-                        <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" class="footer__contact-item">
-                            <span class="footer__contact-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            </span>
+
+                <div class="footer-col">
+                    <h2 class="footer-heading">Contato</h2>
+                    <address class="footer-contact">
+                        <a href="https://www.google.com/maps/search/R.+Bate+Couro,+258,+Luziânia,+GO" target="_blank" rel="noopener">
+                            <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
                             <span>R. Bate Couro, 258<br>Vila Rosário, Luziânia – GO</span>
                         </a>
-                        <a href="tel:+5561998032220" class="footer__contact-item">
-                            <span class="footer__contact-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                            </span>
+                        <a href="tel:+5561998032220">
+                            <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
                             <span>(61) 9 9803-2220</span>
                         </a>
-                        <a href="mailto:l6engenharia@gmail.com" class="footer__contact-item">
-                            <span class="footer__contact-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            </span>
+                        <a href="mailto:l6engenharia@gmail.com">
+                            <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>
                             <span>l6engenharia@gmail.com</span>
                         </a>
                     </address>
                 </div>
-    
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year">2026</span> L6 Engenharia. Todos os direitos reservados.</p>
+                <p>Luziânia – GO · Brasil</p>
             </div>
         </div>
-    
-        <!-- Barra inferior de copyright -->
-        <div class="footer__bottom">
-            <div class="footer__bottom-inner">
-                <p class="footer__copy">
-                    &copy; <span id="footer-year"></span> L6 Engenharia. Todos os direitos reservados.
-                </p>
-            </div>
-        </div>
+        <div class="footer-wordmark" aria-hidden="true">L6 Engenharia</div>
     </footer>
- 
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Voltar ao topo">
+        <svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>
     </button>
 
-    <script src="js/script.js"></script>
- 
+    <script src="js/script.js?v=2.2" defer></script>
 </body>
-</html
+</html>

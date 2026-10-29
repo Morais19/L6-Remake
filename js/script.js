@@ -1,406 +1,665 @@
-/* ── 0. Galerias de projeto ───────────────────────────────────────────────
-   Fotos extras de cada projeto exibidas no modal (além da capa do card).
-   A capa do card entra automaticamente como "Fachada"; as fotos listadas
-   aqui vêm em seguida no carrossel. Para trocar/adicionar fotos, edite
-   este objeto — ex.: [{ src: "assets/images/...jpg", label: "Fachada 2" }].
-
-   O modal mostra apenas fotos e o modelo 3D (sem planta baixa).
-
-   ATENÇÃO: as fotos abaixo são imagens de banco livre (Unsplash), usadas
-   apenas como modelo para o carrossel. Substitua pelas fotos reais de cada
-   obra — basta trocar o arquivo em assets/images/gallery/ mantendo o nome,
-   ou apontar o "src" para o novo caminho.
-   ────────────────────────────────────────────────────────────────────── */
+// Fotos extras de cada projeto, exibidas no modal depois da capa do card.
+// São imagens de banco (Unsplash) usadas como modelo: troque pelas fotos reais (.webp, até 1200px).
+// Três delas também aparecem no carrossel da hero.
 const GAL = "assets/images/gallery/";
 
 const PROJ_GALLERIES = {
     "residencia-moderna": [
-        { src: GAL + "residencia-moderna-2.jpg", label: "Vista lateral" },
-        { src: GAL + "residencia-moderna-3.jpg", label: "Área de lazer" },
+        { src: GAL + "residencia-moderna-2.webp", label: "Vista lateral" },
+        { src: GAL + "residencia-moderna-3.webp", label: "Área de lazer" },
     ],
     "residencia-contemporanea": [
-        { src: GAL + "residencia-contemporanea-2.jpg", label: "Vista lateral" },
-        { src: GAL + "residencia-contemporanea-3.jpg", label: "Área externa" },
+        { src: GAL + "residencia-contemporanea-2.webp", label: "Vista lateral" },
+        { src: GAL + "residencia-contemporanea-3.webp", label: "Área externa" },
     ],
     "condominio-residencial": [
-        { src: GAL + "condominio-residencial-2.jpg", label: "Vista das torres" },
-        { src: GAL + "condominio-residencial-3.jpg", label: "Fachada lateral" },
+        { src: GAL + "condominio-residencial-2.webp", label: "Vista das torres" },
+        { src: GAL + "condominio-residencial-3.webp", label: "Fachada lateral" },
     ],
     "centro-empresarial": [
-        { src: GAL + "centro-empresarial-2.jpg", label: "Fachada em vidro" },
-        { src: GAL + "centro-empresarial-3.jpg", label: "Vista lateral" },
+        { src: GAL + "centro-empresarial-2.webp", label: "Fachada em vidro" },
+        { src: GAL + "centro-empresarial-3.webp", label: "Vista lateral" },
     ],
     "edificio-comercial-misto": [
-        { src: GAL + "edificio-comercial-misto-2.jpg", label: "Fachada lateral" },
-        { src: GAL + "edificio-comercial-misto-3.jpg", label: "Detalhe da fachada" },
+        { src: GAL + "edificio-comercial-misto-2.webp", label: "Fachada lateral" },
+        { src: GAL + "edificio-comercial-misto-3.webp", label: "Detalhe da fachada" },
     ],
     "shopping-center": [
-        { src: GAL + "shopping-center-2.jpg", label: "Praça central" },
-        { src: GAL + "shopping-center-3.jpg", label: "Circulação interna" },
+        { src: GAL + "shopping-center-2.webp", label: "Praça central" },
+        { src: GAL + "shopping-center-3.webp", label: "Circulação interna" },
     ],
     "complexo-industrial": [
-        { src: GAL + "complexo-industrial-2.jpg", label: "Vista geral" },
-        { src: GAL + "complexo-industrial-3.jpg", label: "Pátio de manobras" },
+        { src: GAL + "complexo-industrial-2.webp", label: "Vista geral" },
+        { src: GAL + "complexo-industrial-3.webp", label: "Pátio de manobras" },
     ],
     "galpao-industrial": [
-        { src: GAL + "galpao-industrial-2.jpg", label: "Vista externa" },
-        { src: GAL + "galpao-industrial-3.jpg", label: "Pátio de manobras" },
+        { src: GAL + "galpao-industrial-2.webp", label: "Vista externa" },
+        { src: GAL + "galpao-industrial-3.webp", label: "Pátio de manobras" },
     ],
     "planta-industrial": [
-        { src: GAL + "planta-industrial-2.jpg", label: "Bloco industrial" },
-        { src: GAL + "planta-industrial-3.jpg", label: "Vista lateral" },
+        { src: GAL + "planta-industrial-2.webp", label: "Bloco industrial" },
+        { src: GAL + "planta-industrial-3.webp", label: "Vista lateral" },
     ],
 };
 
-/* ── 1. Revelação por rolagem dos cards ──────────────────────────────────── */
-const cards = document.querySelectorAll(".card_sobre");
+// WhatsApp usado no modal de projeto
+const WHATSAPP_PHONE = "5561998032220";
 
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry, i) => { 
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity   = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }, i * 120);
-                revealObserver.unobserve(entry.target);
-            }
+
+(function () {
+    "use strict";
+
+    // Utilitários
+    const root = document.documentElement;
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[ch]));
+
+    const icon = (name) => '<svg class="ico" aria-hidden="true"><use href="#i-' + name + '"/></svg>';
+
+    // Cada módulo roda isolado: um erro não derruba os demais
+    function run(name, fn) {
+        try { fn(); } catch (err) { console.error("[L6] Falha no módulo \"" + name + "\":", err); }
+    }
+
+    // Fundo inacessível enquanto menu ou modal estão abertos
+    function setBackgroundInert(state, except) {
+        ["#site-header", "#conteudo", ".site-footer", "#back-to-top"].forEach((sel) => {
+            const el = $(sel);
+            if (el && el !== except) el.inert = state;
         });
-    },
-    { threshold: 0.15 }
-);
+    }
 
-cards.forEach((card) => {
-    card.style.opacity    = "0";
-    card.style.transform  = "translateY(24px)";
-    card.style.transition = "opacity .5s ease, transform .5s ease, box-shadow .25s ease";
-    revealObserver.observe(card);
-});
 
-/* ── 3. Menu hamburguer ──────────────────────────────────────────────────── */
-const menuToggle = document.querySelector(".menu-toggle");
-const navbar     = document.querySelector(".navbar");
-const navOverlay = document.getElementById("nav-overlay");
-const navLinks   = document.querySelectorAll(".navbar .nav-link");
-
-function openMenu() {
-    navbar.classList.add("open");
-    menuToggle.classList.add("open");
-    menuToggle.setAttribute("aria-expanded", "true");
-    navOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
-
-function closeMenu() {
-    navbar.classList.remove("open");
-    menuToggle.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    navOverlay.classList.remove("active");
-    document.body.style.overflow = "";
-}
-
-menuToggle.addEventListener("click", () => navbar.classList.contains("open") ? closeMenu() : openMenu());
-navOverlay.addEventListener("click", closeMenu);
-navLinks.forEach((link) => link.addEventListener("click", closeMenu));
-window.addEventListener("resize", () => { if (window.innerWidth >= 768) closeMenu(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
-
-/* ── 4. Projetos: filtragem por categorias ───────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function () {
-    const filterButtons = document.querySelectorAll('.projetos_item');
-    const projects = document.querySelectorAll('.projetos__content');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-
-            projects.forEach(project => {
-                // Se o filtro for 'all', mostra todos. 
-                // Caso contrário, verifica se o projeto contém a classe correspondente ao filtro (removendo o ponto inicial do seletor)
-                const filterClass = filter.replace('.', '');
-                
-                if (filter === 'all' || project.classList.contains(filterClass)) {
-                    project.style.display = 'flex'; // Mantendo o display flex original do CSS
-                    setTimeout(() => {
-                        project.style.opacity = '1';
-                        project.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    project.style.opacity = '0';
-                    project.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        project.style.display = 'none';
-                    }, 300);
-                }
-            });
+    // Anos desde a fundação e ano do copyright
+    run("datas", () => {
+        const year = new Date().getFullYear();
+        $$("[data-since]").forEach((el) => {
+            const diff = year - parseInt(el.dataset.since, 10);
+            if (diff > 0) el.textContent = diff;
         });
-    });
- 
-    /* ── 5. Projetos: botão active-work ─────────────────────────────────── */
-    const filterItems = document.querySelectorAll('.projetos_item');
- 
-    function setActiveWork() {
-        filterItems.forEach(item => item.classList.remove('active-work'));
-        this.classList.add('active-work');
-    }
- 
-    filterItems.forEach(item => item.addEventListener('click', setActiveWork));
- 
-    /* ── 6. Projetos: modal "Ver Detalhes" ───────────────────────────────── */
-    const projectButtons = document.querySelectorAll('.projetos__button');
- 
-    projectButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
- 
-            const card = button.closest('.projetos__content');
-            const image           = card.querySelector('.projetos__img').src;
-            const title           = card.querySelector('.projetos__title').textContent;
-            const description     = card.querySelector('.projetos__description').textContent;
- 
-            const area            = card.dataset.area            || 'N/A';
-            const duration        = card.dataset.duration        || 'N/A';
-            const client          = card.dataset.client          || 'Confidencial';
-            const sketchfab       = card.dataset.sketchfab       || '';
-            const subtitle        = card.dataset.subtitle        || '';
-            const fullDescription = card.dataset.fullDescription || description;
-            const slug            = card.dataset.project          || '';
-            const gallery         = PROJ_GALLERIES[slug]          || [];
- 
-            openProjectModal({ image, title, description, area, duration, client, sketchfab, subtitle, fullDescription, gallery });
-        });
-    });
-});
- 
-function openProjectModal(project) {
-    const has3D = !!project.sketchfab;
-
-    /* Monta a lista de mídias: capa (Fachada) + fotos extras + (3D) */
-    const media = [{ type: 'photo', src: project.image, label: 'Fachada' }];
-    (project.gallery || []).forEach(g => media.push({ type: 'photo', src: g.src, label: g.label }));
-    if (has3D) media.push({ type: '3d', label: 'Modelo 3D' });
-
-    /* Slides do carrossel = as fotos.
-       O modelo 3D fica fora do carrossel, acessível pela aba "Modelo 3D". */
-    const slideIdx = [];
-    media.forEach((m, i) => { if (m.type !== '3d') slideIdx.push(i); });
-
-    /* Ícones SVG (o tamanho vem do CSS) */
-    const cubeIcon   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>';
-    const photoIcon  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
-
-    /* Cartões de informação (Área / Duração / Cliente) */
-    const stat = (label, value, icon) =>
-        '<div class="pm-stat"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--color-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + icon + '</svg><span class="lbl">' + label + '</span><span class="val">' + value + '</span></div>';
-    const statsHTML =
-        stat('Área', project.area, '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>') +
-        stat('Duração', project.duration, '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>') +
-        stat('Cliente', project.client, '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>');
-
-    /* Abas (Fotos / Modelo 3D) */
-    const tabsHTML =
-        '<button class="pm-tab" type="button" data-mode="fotos">' + photoIcon + ' Fotos</button>' +
-        (has3D ? '<button class="pm-tab" type="button" data-mode="3d">' + cubeIcon + ' Modelo 3D</button>' : '');
-
-    const overlay = document.createElement('div');
-    overlay.className = 'pm-overlay';
-    overlay.innerHTML =
-        '<div class="pm-card" role="dialog" aria-modal="true" aria-label="' + project.title + '">' +
-            '<button class="pm-close" type="button" aria-label="Fechar">&times;</button>' +
-            '<div class="pm-media">' +
-                '<div class="pm-stage">' +
-                    '<img class="pm-photo" src="' + project.image + '" alt="' + project.title + '">' +
-                    '<div class="pm-3d"></div>' +
-                    '<button class="pm-arrow pm-prev" type="button" aria-label="Foto anterior">&#8249;</button>' +
-                    '<button class="pm-arrow pm-next" type="button" aria-label="Próxima foto">&#8250;</button>' +
-                    '<span class="pm-counter"></span>' +
-                '</div>' +
-                '<div class="pm-tabs">' + tabsHTML + '</div>' +
-            '</div>' +
-            '<div class="pm-info">' +
-                '<div>' +
-                    '<h3 class="pm-title">' + project.title + '</h3>' +
-                    (project.subtitle ? '<p class="pm-subtitle">' + project.subtitle + '</p>' : '') +
-                '</div>' +
-                '<div class="pm-stats">' + statsHTML + '</div>' +
-                '<div>' +
-                    '<p class="pm-about-h">Sobre o projeto</p>' +
-                    '<p class="pm-about-t">' + project.fullDescription + '</p>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
-
-    document.body.appendChild(overlay);
-    document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => overlay.classList.add('open'));
-
-    /* Referências aos elementos */
-    const photoEl = overlay.querySelector('.pm-photo');
-    const wrap3d  = overlay.querySelector('.pm-3d');
-    const prevBtn = overlay.querySelector('.pm-prev');
-    const nextBtn = overlay.querySelector('.pm-next');
-    const counter = overlay.querySelector('.pm-counter');
-    const tabs    = Array.prototype.slice.call(overlay.querySelectorAll('.pm-tab'));
-    let current = 0;
-    let iframeLoaded = false;
-
-    function ensureIframe() {
-        if (iframeLoaded) return;
-        wrap3d.innerHTML = '<iframe src="https://sketchfab.com/models/' + project.sketchfab +
-            '/embed?autostart=1&ui_theme=dark&preload=1" title="' + project.title +
-            ' — Modelo 3D" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>';
-        iframeLoaded = true;
-    }
-
-    function render() {
-        const item = media[current];
-        const is3D = item.type === '3d';
-
-        if (is3D) {
-            ensureIframe();
-            wrap3d.style.display = 'block';
-        } else {
-            wrap3d.style.display = 'none';
-            photoEl.src = item.src;
-            photoEl.alt = item.label;
-        }
-
-        /* setas e contador só fazem sentido com mais de uma foto */
-        const multi = !is3D && slideIdx.length > 1;
-        prevBtn.style.display = nextBtn.style.display = multi ? 'flex' : 'none';
-        counter.style.display = multi ? 'block' : 'none';
-        if (multi) {
-            counter.textContent = item.label + ' · ' + (slideIdx.indexOf(current) + 1) + ' / ' + slideIdx.length;
-        }
-
-        tabs.forEach(t => t.classList.toggle('active', (t.dataset.mode === '3d') ? is3D : !is3D));
-    }
-
-    function go(delta) {
-        const pos = slideIdx.indexOf(current);
-        const base = pos === -1 ? 0 : pos;
-        current = slideIdx[(base + delta + slideIdx.length) % slideIdx.length];
-        render();
-    }
-
-    prevBtn.addEventListener('click', () => go(-1));
-    nextBtn.addEventListener('click', () => go(1));
-    tabs.forEach(t => t.addEventListener('click', () => {
-        if (t.dataset.mode === '3d') {
-            const i = media.findIndex(m => m.type === '3d');
-            if (i >= 0) current = i;
-        } else {
-            current = slideIdx[0];
-        }
-        render();
-    }));
-
-    render();
-
-    /* Fechar */
-    function closeModal() {
-        overlay.classList.remove('open');
-        document.removeEventListener('keydown', onKey);
-        setTimeout(() => {
-            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-            document.body.style.overflow = '';
-        }, 280);
-    }
-    function onKey(e) {
-        if (e.key === 'Escape') closeModal();
-        else if (e.key === 'ArrowLeft'  && media[current].type !== '3d') go(-1);
-        else if (e.key === 'ArrowRight' && media[current].type !== '3d') go(1);
-    }
-    overlay.querySelector('.pm-close').addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', onKey);
-}
-
-/* ── 7. Rodapé: ano automático no copyright ──────────────────────────────── */
-const yearEl = document.getElementById('footer-year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* ── 8. Footer: animação de entrada via IntersectionObserver ──────────────
-   Cada coluna desliza suavemente para cima ao entrar na viewport.
-   ─────────────────────────────────────────────────────────────────────── */
-(function initFooterReveal() {
-    const cols = document.querySelectorAll('.footer__col');
-
-    if (!cols.length) return;
-
-    cols.forEach((col) => {
-        col.style.opacity   = '0';
-        col.style.transform = 'translateY(28px)';
-        col.style.transition = 'opacity .55s ease, transform .55s ease';
+        const yearEl = $("#footer-year");
+        if (yearEl) yearEl.textContent = year;
     });
 
-    const footerObserver = new IntersectionObserver(
-        (entries) => {
+
+    // Revelação ao rolar (IntersectionObserver)
+    run("revelacao", () => {
+        const groups = $$("[data-stagger]");
+        groups.forEach((group) => {
+            Array.from(group.children).forEach((child, i) => child.style.setProperty("--i", i));
+        });
+
+        const targets = $$("[data-reveal], [data-stagger]");
+
+        // Ao terminar, devolve as transições e os hovers de cada componente
+        const finish = (el) => {
+            el.removeAttribute("data-reveal");
+            el.removeAttribute("data-stagger");
+            el.classList.remove("is-in");
+        };
+
+        if (!("IntersectionObserver" in window) || reduceMotion.matches) {
+            targets.forEach(finish);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) return;
-
-                const cols = entry.target.querySelectorAll('.footer__col');
-                cols.forEach((col, i) => {
-                    setTimeout(() => {
-                        col.style.opacity   = '1';
-                        col.style.transform = 'translateY(0)';
-                    }, i * 100);
-                });
-
-                footerObserver.unobserve(entry.target);
+                const el = entry.target;
+                observer.unobserve(el);
+                el.classList.add("is-in");
+                const steps = el.hasAttribute("data-stagger") ? el.children.length : 1;
+                setTimeout(() => finish(el), 900 + steps * 70);
             });
-        },
-        { threshold: 0.08 }
-    );
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
 
-    const footerGrid = document.querySelector('.footer__grid');
-    if (footerGrid) footerObserver.observe(footerGrid);
-})();
-
-/* ── 10. Contato: badge de disponibilidade dinâmico ──────────────────────── */
-(function initAvailBadge() {
-    const badge = document.getElementById('contato-avail-badge');
-    const replyMsg = document.getElementById('contato-reply-msg');
-    if (!badge || !replyMsg) return;
-
-    const now = new Date();
-    const day = now.getDay();   /* 0 = dom, 6 = sáb */
-    const hour = now.getHours();
-    const isOpen = day >= 1 && day <= 5 && hour >= 8 && hour < 18;
-
-    if (isOpen) {
-        badge.innerHTML =
-            '<div class="contato-avail online">' +
-                '<span class="avail-dot on" aria-hidden="true"></span>' +
-                'Online agora' +
-            '</div>';
-        replyMsg.textContent = 'Respondemos em até 1h';
-    } else {
-        const nextDay = (day === 0 || day === 6) ? 'segunda-feira' : 'amanhã';
-        badge.innerHTML =
-            '<div class="contato-avail offline">' +
-                '<span class="avail-dot off" aria-hidden="true"></span>' +
-                'Fora do horário' +
-            '</div>';
-        replyMsg.textContent = 'Respondemos ' + nextDay + ' a partir das 8h';
-    }
-})();
-(function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-
-    function toggleVisibility() {
-        if (window.scrollY > window.innerHeight * 0.6) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
-    }
-
-    toggleVisibility();
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        targets.forEach((el) => observer.observe(el));
     });
+
+    // Avisa o <head> que o script carregou
+    window.L6_READY = true;
+
+
+    // Cabeçalho, progresso de rolagem e voltar ao topo
+    run("rolagem", () => {
+        const header = $("#site-header");
+        const progress = $(".scroll-progress__bar");
+        const toTop = $("#back-to-top");
+
+        let lastY = window.scrollY;
+        let ticking = false;
+
+        // Um requestAnimationFrame por quadro
+        function update() {
+            ticking = false;
+            const y = window.scrollY;
+            const vh = window.innerHeight;
+            const max = root.scrollHeight - vh;
+
+            progress.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1).toFixed(4) : 0) + ")";
+            header.classList.toggle("is-scrolled", y > 12);
+
+            if (!root.classList.contains("menu-open") && Math.abs(y - lastY) > 6) {
+                header.classList.toggle("is-hidden", y > lastY && y > vh * 0.6);
+                lastY = y;
+            }
+
+            if (toTop) toTop.classList.toggle("is-visible", y > vh * 0.8);
+        }
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        window.addEventListener("resize", update, { passive: true });
+        update();
+
+        if (toTop) {
+            toTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+            });
+        }
+    });
+
+
+    // Link ativo da navegação conforme a seção visível
+    run("nav-ativa", () => {
+        const links = $$(".nav__link[data-nav]");
+        if (!links.length || !("IntersectionObserver" in window)) return;
+
+        const byId = new Map(links.map((l) => [l.dataset.nav, l]));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                links.forEach((l) => { l.classList.remove("is-active"); l.removeAttribute("aria-current"); });
+                const link = byId.get(entry.target.id);
+                if (link) { link.classList.add("is-active"); link.setAttribute("aria-current", "true"); }
+            });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+
+        byId.forEach((_, id) => { const s = document.getElementById(id); if (s) observer.observe(s); });
+    });
+
+
+    // Menu mobile
+    run("menu", () => {
+        const btn = $(".menu-btn");
+        const menu = $("#mobile-menu");
+        if (!btn || !menu) return;
+        const cta = $(".header-cta");
+
+        function setMenu(open) {
+            root.classList.toggle("menu-open", open);
+            root.classList.toggle("is-locked", open);
+            btn.setAttribute("aria-expanded", String(open));
+            btn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+            // Com o menu aberto, só o cabeçalho e o menu recebem foco
+            ["#conteudo", ".site-footer", "#back-to-top"].forEach((sel) => { const el = $(sel); if (el) el.inert = open; });
+            if (cta) cta.inert = open;
+        }
+
+        const isOpen = () => root.classList.contains("menu-open");
+
+        btn.addEventListener("click", () => setMenu(!isOpen()));
+        $$("a", menu).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && isOpen()) { setMenu(false); btn.focus(); }
+        });
+        window.addEventListener("resize", () => { if (window.innerWidth >= 1024 && isOpen()) setMenu(false); });
+    });
+
+
+    // Contadores dos indicadores
+    run("contadores", () => {
+        const els = $$("[data-count]");
+        if (!els.length || reduceMotion.matches || !("IntersectionObserver" in window)) return;
+
+        const animate = (el) => {
+            const finalText = el.textContent.trim();
+            const decimals = parseInt(el.dataset.decimals || "0", 10);
+            const target = parseFloat(finalText.replace(/\./g, "").replace(",", "."));
+            if (!isFinite(target)) return;
+
+            const fmt = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+            el.style.minWidth = el.offsetWidth + "px"; // evita que o layout "pule"
+
+            const duration = 1400;
+            const start = performance.now();
+            const step = (now) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(2, -10 * t); // ease-out exponencial
+                el.textContent = t < 1 ? fmt(target * eased) : finalText;
+                if (t < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                observer.unobserve(entry.target);
+                animate(entry.target);
+            });
+        }, { threshold: 0.6 });
+
+        els.forEach((el) => observer.observe(el));
+    });
+
+
+    // Faixa de serviços: pausa quando está fora da tela
+    run("ticker", () => {
+        const ticker = $(".ticker");
+        if (!ticker || !("IntersectionObserver" in window)) return;
+        new IntersectionObserver(([entry]) => {
+            ticker.classList.toggle("is-paused", !entry.isIntersecting);
+        }).observe(ticker);
+    });
+
+
+    // Projetos: abrir o modal a partir de um card
+    function openFromCard(card, opener) {
+        if (!card) return;
+        const img = $(".proj__img", card);
+        const title = $(".proj__title", card).textContent.trim();
+        const desc = $(".proj__desc", card).textContent.trim();
+        const cat = $(".proj__meta span", card);
+        const slug = card.dataset.project || "";
+
+        openProjectModal({
+            image: img.getAttribute("src"),
+            title: title,
+            category: cat ? cat.textContent.trim() : "",
+            area: card.dataset.area || "N/A",
+            duration: card.dataset.duration || "N/A",
+            client: card.dataset.client || "Confidencial",
+            sketchfab: card.dataset.sketchfab || "",
+            subtitle: card.dataset.subtitle || "",
+            fullDescription: card.dataset.fullDescription || desc,
+            gallery: PROJ_GALLERIES[slug] || [],
+        }, opener);
+    }
+
+    run("cards", () => {
+        $$(".proj__btn").forEach((btn) => {
+            const card = btn.closest(".proj");
+            // nome acessível único: "Ver detalhes: <projeto>"
+            btn.setAttribute("aria-label", "Ver detalhes: " + $(".proj__title", card).textContent.trim());
+            btn.addEventListener("click", () => openFromCard(card, btn));
+        });
+    });
+
+
+    // Projetos: filtro por categoria
+    run("filtro", () => {
+        const wrap = $(".filters");
+        const buttons = $$(".filter");
+        const cards = $$(".proj");
+        const status = $("#proj-status");
+        if (!wrap || !buttons.length) return;
+
+        // Contagem por categoria
+        buttons.forEach((b) => {
+            const f = b.dataset.filter;
+            const n = f === "all" ? cards.length : cards.filter((c) => c.dataset.category === f).length;
+            const count = $(".filter__count", b);
+            if (count) count.textContent = n;
+        });
+
+        function moveIndicator() {
+            const active = $(".filter.is-active", wrap);
+            if (!active) return;
+            wrap.style.setProperty("--x", active.offsetLeft + "px");
+            wrap.style.setProperty("--y", active.offsetTop + "px");
+            wrap.style.setProperty("--w", active.offsetWidth + "px");
+            wrap.style.setProperty("--h", active.offsetHeight + "px");
+            wrap.classList.add("has-indicator");
+        }
+
+        // Desloca o card do meio de cada linha (desktop)
+        function setOffsets() {
+            cards.filter((c) => !c.hidden).forEach((c, i) => c.classList.toggle("is-offset", i % 3 === 1));
+        }
+
+        function announce(filter) {
+            if (!status) return;
+            const visible = cards.filter((c) => !c.hidden).length;
+            const label = $(".filter.is-active", wrap).firstChild.textContent.trim().toLowerCase();
+            status.textContent = "Mostrando " + visible + (visible === 1 ? " projeto" : " projetos") +
+                (filter === "all" ? "" : " — categoria " + label);
+        }
+
+        // Esconde/mostra e faz um fade curto nos cards visíveis
+        function apply(filter) {
+            cards.forEach((c) => { c.hidden = !(filter === "all" || c.dataset.category === filter); });
+            setOffsets();
+            announce(filter);
+
+            if (reduceMotion.matches) return;
+            cards.filter((c) => !c.hidden).forEach((c, i) => {
+                if (c.animate) c.animate(
+                    [{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "none" }],
+                    { duration: 400, delay: i * 40, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" }
+                );
+            });
+        }
+
+        buttons.forEach((b) => {
+            b.addEventListener("click", () => {
+                if (b.classList.contains("is-active")) return;
+                buttons.forEach((x) => { x.classList.remove("is-active"); x.setAttribute("aria-pressed", "false"); });
+                b.classList.add("is-active");
+                b.setAttribute("aria-pressed", "true");
+                moveIndicator();
+                apply(b.dataset.filter);
+            });
+        });
+
+        setOffsets();
+        moveIndicator();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+        let raf = 0;
+        window.addEventListener("resize", () => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(moveIndicator);
+        });
+    });
+
+
+    // Hero: carrossel de projetos em destaque
+    run("hero-carrossel", () => {
+        const show = $("[data-show]");
+        if (!show) return;
+        const slides = $$(".show__slide", show);
+        const dots = $$(".show__dot", show);
+        const labelEl = $("[data-show-label]");
+        const indexEl = $("[data-show-index]");
+        let current = 0;
+
+        // As fotos 2 e 3 só carregam depois da página
+        const loadImg = (slide) => {
+            const img = $("img", slide);
+            if (img && !img.getAttribute("src") && img.dataset.src) img.src = img.dataset.src;
+        };
+        window.addEventListener("load", () => slides.forEach(loadImg));
+
+        function go(next) {
+            if (next === current) return;
+            loadImg(slides[next]);
+            slides[current].classList.remove("is-active");
+            dots.forEach((d, i) => {
+                d.classList.toggle("is-active", i === next);
+                d.classList.toggle("is-done", i < next);
+                if (i === next) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current");
+            });
+            slides[next].classList.add("is-active");
+            current = next;
+            if (labelEl) labelEl.textContent = slides[next].dataset.category || "";
+            if (indexEl) indexEl.textContent = String(next + 1).padStart(2, "0");
+        }
+
+        dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+
+        // Avança junto com a barra de progresso (CSS); pausar a barra pausa o carrossel
+        if (reduceMotion.matches) {
+            show.classList.add("is-static");
+        } else {
+            dots.forEach((d, i) => {
+                const bar = $("span", d);
+                bar.addEventListener("animationend", () => { if (i === current) go((current + 1) % slides.length); });
+            });
+            const pause = () => show.classList.add("is-paused");
+            const resume = () => show.classList.remove("is-paused");
+            show.addEventListener("mouseenter", pause);
+            show.addEventListener("mouseleave", resume);
+            show.addEventListener("focusin", pause);
+            show.addEventListener("focusout", resume);
+            document.addEventListener("visibilitychange", () => (document.hidden ? pause() : resume()));
+        }
+
+        // Arrastar no toque
+        let startX = null;
+        show.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+        show.addEventListener("pointerup", (e) => {
+            if (startX === null) return;
+            const dx = e.clientX - startX;
+            startX = null;
+            if (Math.abs(dx) < 50) return;
+            go((current + (dx < 0 ? 1 : -1) + slides.length) % slides.length);
+        });
+
+        // "Ver projeto" abre o modal do card correspondente
+        $$("[data-open-project]", show).forEach((btn) => {
+            btn.addEventListener("click", () => {
+                openFromCard($('.proj[data-project="' + btn.dataset.openProject + '"]'), btn);
+            });
+        });
+    });
+
+
+    // Contato: selo de disponibilidade dinâmico
+    run("disponibilidade", () => {
+        const badge = $("#contato-avail-badge");
+        const replyMsg = $("#contato-reply-msg");
+        if (!badge || !replyMsg) return;
+
+        const now = new Date();
+        const day = now.getDay(); // 0 = domingo, 6 = sábado
+        const hour = now.getHours();
+        const isOpen = day >= 1 && day <= 5 && hour >= 8 && hour < 18;
+
+        if (isOpen) {
+            badge.innerHTML = '<span class="avail avail--on"><span class="pulse-dot" aria-hidden="true"></span>Online agora</span>';
+            replyMsg.textContent = "Respondemos em até 1h";
+        } else {
+            const nextDay = (day === 0 || day === 6 || (day === 5 && hour >= 18)) ? "segunda-feira" : (hour < 8 ? "hoje" : "amanhã");
+            badge.innerHTML = '<span class="avail avail--off"><span class="pulse-dot" aria-hidden="true"></span>Fora do horário</span>';
+            replyMsg.textContent = "Respondemos " + nextDay + " a partir das 8h";
+        }
+    });
+
+
+    // Modal de projeto: fotos + modelo 3D
+    function openProjectModal(project, opener) {
+        if ($(".pm")) return;
+
+        const photos = [{ src: project.image, label: "Fachada" }].concat(project.gallery || []);
+        const has3D = !!project.sketchfab;
+        const multi = photos.length > 1;
+        let current = 0;
+        let mode = "photos";
+        let iframeLoaded = false;
+
+        const waText = "Olá, vim pelo site da L6 Engenharia e gostaria de falar sobre um projeto como \"" + project.title + "\".";
+        const waHref = "https://api.whatsapp.com/send/?phone=" + WHATSAPP_PHONE + "&text=" + encodeURIComponent(waText);
+
+        const stat = (label, value, ico) =>
+            '<div class="pm__stat"><dt>' + icon(ico) + esc(label) + '</dt><dd>' + esc(value) + '</dd></div>';
+
+        const modal = document.createElement("div");
+        modal.className = "pm";
+        modal.setAttribute("role", "dialog");
+        modal.setAttribute("aria-modal", "true");
+        modal.setAttribute("aria-labelledby", "pm-title");
+        modal.innerHTML =
+            '<div class="pm__backdrop" data-pm-close></div>' +
+            '<div class="pm__card">' +
+                '<button class="pm__close" type="button" aria-label="Fechar" data-pm-close>' + icon("close") + '</button>' +
+                '<div class="pm__media">' +
+                    '<div class="pm__stage">' +
+                        '<img class="pm__photo" src="' + esc(photos[0].src) + '" alt="' + esc(project.title + " — " + photos[0].label) + '">' +
+                        '<div class="pm__3d" hidden></div>' +
+                        (multi
+                            ? '<button class="pm__arrow pm__arrow--prev" type="button" aria-label="Foto anterior">' + icon("chev-left") + '</button>' +
+                                '<button class="pm__arrow pm__arrow--next" type="button" aria-label="Próxima foto">' + icon("chev-right") + '</button>'
+                            : '') +
+                        '<span class="pm__counter" aria-live="polite"></span>' +
+                    '</div>' +
+                    '<div class="pm__bar">' +
+                        (has3D
+                            ? '<div class="pm__tabs" role="group" aria-label="Tipo de visualização">' +
+                                    '<button class="pm__tab" type="button" data-mode="photos" aria-pressed="true">' + icon("image") + 'Fotos</button>' +
+                                    '<button class="pm__tab" type="button" data-mode="3d" aria-pressed="false">' + icon("cube") + 'Modelo 3D</button>' +
+                                '</div>'
+                            : '') +
+                        '<div class="pm__thumbs" role="group" aria-label="Fotos do projeto">' +
+                            photos.map((p, i) =>
+                                '<button class="pm__thumb" type="button" data-index="' + i + '" aria-label="Foto ' + (i + 1) + ': ' + esc(p.label) + '">' +
+                                    '<img src="' + esc(p.src) + '" alt="" loading="lazy">' +
+                                '</button>').join("") +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="pm__info">' +
+                    '<div>' +
+                        (project.category ? '<p class="pm__cat">' + esc(project.category) + '</p>' : '') +
+                        '<h2 class="pm__title" id="pm-title">' + esc(project.title) + '</h2>' +
+                        (project.subtitle ? '<p class="pm__subtitle">' + esc(project.subtitle) + '</p>' : '') +
+                    '</div>' +
+                    '<dl class="pm__stats">' +
+                        stat("Área", project.area, "home") +
+                        stat("Duração", project.duration, "calendar") +
+                        stat("Cliente", project.client, "user") +
+                    '</dl>' +
+                    '<div>' +
+                        '<h3 class="pm__about-h">Sobre o projeto</h3>' +
+                        '<p class="pm__about-t">' + esc(project.fullDescription) + '</p>' +
+                    '</div>' +
+                    '<a class="btn btn--primary pm__cta" href="' + esc(waHref) + '" target="_blank" rel="noopener">' +
+                        icon("whatsapp") + 'Falar sobre este projeto' +
+                    '</a>' +
+                '</div>' +
+            '</div>';
+
+        document.body.appendChild(modal);
+        root.classList.add("is-locked");
+        setBackgroundInert(true);
+
+        const card = $(".pm__card", modal);
+        const photoEl = $(".pm__photo", modal);
+        const wrap3d = $(".pm__3d", modal);
+        const prevBtn = $(".pm__arrow--prev", modal);
+        const nextBtn = $(".pm__arrow--next", modal);
+        const counter = $(".pm__counter", modal);
+        const thumbs = $$(".pm__thumb", modal);
+        const tabs = $$(".pm__tab", modal);
+        const closeBtn = $(".pm__close", modal);
+
+        // Pré-carrega as fotos da galeria
+        photos.slice(1).forEach((p) => { const im = new Image(); im.src = p.src; });
+
+        function ensureIframe() {
+            if (iframeLoaded) return;
+            wrap3d.innerHTML = '<iframe src="https://sketchfab.com/models/' + encodeURIComponent(project.sketchfab) +
+                '/embed?autostart=1&ui_theme=dark&preload=1" title="' + esc(project.title) +
+                ' — Modelo 3D" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>';
+            iframeLoaded = true;
+        }
+
+        function showPhoto(i) {
+            const item = photos[i];
+            const alt = project.title + " — " + item.label;
+            if (photoEl.getAttribute("src") === item.src) { photoEl.alt = alt; return; }
+
+            if (reduceMotion.matches) { photoEl.src = item.src; photoEl.alt = alt; return; }
+            photoEl.classList.add("is-swapping");
+            setTimeout(() => {
+                const done = () => photoEl.classList.remove("is-swapping");
+                photoEl.addEventListener("load", done, { once: true });
+                photoEl.addEventListener("error", done, { once: true });
+                photoEl.src = item.src;
+                photoEl.alt = alt;
+                if (photoEl.complete) done();
+            }, 160);
+        }
+
+        function render() {
+            const is3D = mode === "3d";
+            if (is3D) ensureIframe();
+            wrap3d.hidden = !is3D;
+            if (!is3D) showPhoto(current);
+
+            if (prevBtn) prevBtn.hidden = nextBtn.hidden = is3D;
+            counter.hidden = is3D || !multi;
+            counter.textContent = photos[current].label + " · " + (current + 1) + " / " + photos.length;
+
+            thumbs.forEach((t, i) => {
+                if (!is3D && i === current) t.setAttribute("aria-current", "true");
+                else t.removeAttribute("aria-current");
+            });
+            tabs.forEach((t) => t.setAttribute("aria-pressed", String((t.dataset.mode === "3d") === is3D)));
+        }
+
+        function go(delta) {
+            mode = "photos";
+            current = (current + delta + photos.length) % photos.length;
+            render();
+        }
+
+        if (prevBtn) prevBtn.addEventListener("click", () => go(-1));
+        if (nextBtn) nextBtn.addEventListener("click", () => go(1));
+        thumbs.forEach((t) => t.addEventListener("click", () => {
+            mode = "photos";
+            current = parseInt(t.dataset.index, 10);
+            render();
+        }));
+        tabs.forEach((t) => t.addEventListener("click", () => { mode = t.dataset.mode; render(); }));
+
+        // Arrastar a foto no toque
+        const stage = $(".pm__stage", modal);
+        let startX = null;
+        stage.addEventListener("pointerdown", (e) => { if (mode === "photos") startX = e.clientX; });
+        stage.addEventListener("pointerup", (e) => {
+            if (startX === null) return;
+            const dx = e.clientX - startX;
+            startX = null;
+            if (multi && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+        });
+
+        // Fechar e devolver o foco
+        function close() {
+            modal.classList.remove("is-open");
+            document.removeEventListener("keydown", onKey);
+            const remove = () => {
+                if (modal.parentNode) modal.parentNode.removeChild(modal);
+                root.classList.remove("is-locked");
+                setBackgroundInert(false);
+                if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+            };
+            if (reduceMotion.matches) remove(); else setTimeout(remove, 380);
+        }
+
+        function focusables() {
+            return $$('button, a[href], iframe, [tabindex]:not([tabindex="-1"])', card)
+                .filter((el) => !el.hidden && el.getClientRects().length > 0);
+        }
+
+        function onKey(e) {
+            if (e.key === "Escape") { e.preventDefault(); close(); return; }
+            if ((e.key === "ArrowLeft" || e.key === "ArrowRight") && mode === "photos" && multi &&
+                !(document.activeElement && document.activeElement.tagName === "IFRAME")) {
+                go(e.key === "ArrowLeft" ? -1 : 1);
+                return;
+            }
+            if (e.key === "Tab") {
+                const items = focusables();
+                if (!items.length) return;
+                const first = items[0];
+                const last = items[items.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        }
+
+        $$("[data-pm-close]", modal).forEach((el) => el.addEventListener("click", close));
+        document.addEventListener("keydown", onKey);
+
+        render();
+        requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("is-open")));
+        closeBtn.focus({ preventScroll: true });
+    }
 })();
